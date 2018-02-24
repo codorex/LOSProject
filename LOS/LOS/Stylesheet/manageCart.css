@@ -1,0 +1,30 @@
+﻿#panel-primary {
+	border: none;
+	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 60px;
+	width: 60%;
+}
+
+#panel-container {
+	height: 100%;
+	margin-top: 60px;
+}
+
+#panel-heading{
+	background-color: #424e6c;
+}
+
+#clearCartBtn {
+	padding: 2px;
+	padding-left: 5px;
+	padding-left: 5px;
+}
+
+#panel-footer {
+	background-color: #424e6c;
+}
+
+#panel-row {
+	background-color: #424e6c;
+}

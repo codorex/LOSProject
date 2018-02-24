@@ -1,0 +1,65 @@
+﻿@model LOS.Models.DisplayModel
+	@{ 
+		int cartItems = Model.CartItemCount;
+		int imageCount = 0;
+	}
+
+<link rel="stylesheet" href="~/Stylesheet/details.css" />
+
+<div id="backToTop"><div onclick="backToTop();"><span class="glyphicon glyphicon-circle-arrow-up" id="back-to-top"></span></div></div>
+<div id="products" class="row list-group">
+	@{
+		if (Model.ProductsPaged.Collection.Count == 0)
+		{
+			<h2><i>No products matching your search.</i></h2>
+		}
+
+		foreach (var product in Model.ProductsPaged.Collection)
+		{
+			<div style="background-color: #303a52;">
+				<div class="item  col-xs-4 col-lg-4" id="product-content">
+					<div class="thumbnail" style="border-radius: 15px;">
+						<div class="caption" style="border-radius: 10px;">
+							<h4 class="group inner list-group-item-heading" style="min-height: 200px;">
+								@if (Model.ProductsImages[imageCount] != null)
+								{
+									<a href="/Product/Details/@product.ProductID"><div><img class="group list-group-image" id="productThumbnail" src="~/ImageHandler.ashx?id=@Model.ProductsImages[imageCount].FileID.Value" alt="" /></div></a>
+								}
+								else
+								{
+									<a href="/Product/Details/@product.ProductID"><img class="group list-group-image" id="productThumbnail" src="https://www.cekpremi.com/blog/wp-content/uploads/2015/10/ciputranews_1412049821.jpg" alt="" /></a>
+								}
+								<label for="caption" id="product-name">@product.Name</label>
+							</h4>
+							<div class="row" id="product-details">
+								<div class="col-xs-12 col-md-6" id="prodDetail">
+									<p class="lead" style="color: #8bfe74;">
+										@product.Price USD
+									</p>
+								</div>
+								<div class="col-xs-12 col-md-6" id="prodDetail" style="padding-right: 10px;">
+									@for (int i = 1; i <= 5; i++)
+									{
+										if (i <= product.Rating)
+										{
+											<span class="glyphicon glyphicon-star" id="rating"></span>
+										}
+										else
+										{
+											<span class="glyphicon glyphicon-star star1" id="rating"></span>
+										}
+									}
+									(@product.Rating of 5)
+									@Html.ActionLink("Show more", "Details", new { id = product.ProductID }, new { id = "prodDetail", style = "margin: 10px;pointer-events: all; cursor: pointer;" })
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			imageCount++;
+		}
+
+	}
+</div>
+@{ Html.RenderPartial("_Paging", Model); }

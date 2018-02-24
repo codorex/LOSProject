@@ -1,0 +1,14 @@
+﻿#message-container {
+	width: 40vw;
+	margin: 0 auto;
+	margin-top: 90px;
+	padding: 10px;
+	padding-bottom: 20px;
+	background-color: #384259;
+	border-radius: 10px;
+}
+
+#message {
+	text-align: center;
+	color: white;
+}

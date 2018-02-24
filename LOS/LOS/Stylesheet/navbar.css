@@ -1,0 +1,51 @@
+﻿#navbar-main {
+	position: fixed;
+	top: 0px;
+	z-index: 99;
+	border: none;
+	box-shadow: 0px 5px 70px;
+}
+
+#navbar-wrap {
+	background-color: #2e353d;
+}
+
+#logo {
+	width: 5vh;
+	margin-top: -10px;
+}
+
+#categoriesDropDown {
+	background-color: #2e353d;
+	visibility: hidden;
+	z-index: 99999 !important;
+	width: 35vw;
+}
+
+#dropdown-menu {
+	padding: 15px;
+	padding-bottom: 0px;
+	background-color: rgb(70, 82, 110);
+	color: white;
+	border-radius: 10px;
+}
+
+#username, #password {
+	margin-top: 10px;
+	border-radius: 10px;
+}
+
+#login {
+	margin-top: 10px;
+	width: 100%;
+	margin-bottom: 10px;
+	color: white;
+	border: none;
+}
+
+#register {
+	color: white;
+	text-decoration: none;
+	border: none;
+	width: 100%;
+}

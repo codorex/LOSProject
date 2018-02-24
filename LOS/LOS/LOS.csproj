@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6948AE67-1AC7-45DF-A720-3B0E545808A4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LOS</RootNamespace>
+    <AssemblyName>LOS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=4.0.8.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.0.8\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=4.0.8.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.4.0.8\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=4.0.8.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.Mvc.4.0.8\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox_buttons.png" />
+    <Content Include="Content\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\jquery.fancybox-buttons.css" />
+    <Content Include="Content\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="Content\lb_1.jpg" />
+    <Content Include="Resources\Images\01.jpg" />
+    <Content Include="Resources\Images\02.jpg" />
+    <Content Include="Resources\Images\03.jpg" />
+    <Content Include="Resources\Images\05.jpg" />
+    <Content Include="Resources\Images\114700253_2.jpg" />
+    <Content Include="Resources\Images\1497769450244.png" />
+    <Content Include="Resources\Images\63mm_fatties_black_-_family.jpg" />
+    <Content Include="Resources\Images\63mm_fatties_mocha_-_family.jpg" />
+    <Content Include="Resources\Images\63mm_fatties_sky_blue_-_family.jpg" />
+    <Content Include="Resources\Images\70mm_boss_hawgs_-_family.jpg" />
+    <Content Include="Resources\Images\73mm_biggies_-_family.jpg" />
+    <Content Include="Resources\Images\account.png" />
+    <Content Include="Resources\Images\account_2.png" />
+    <Content Include="Resources\Images\bamboo-pinner---angles.jpg" />
+    <Content Include="Resources\Images\bamboo-pinner-vlam-landyachtz-cruiser-board-longboard-skateboard-01.jpg" />
+    <Content Include="Resources\Images\bamboo-pinner-vlam-landyachtz-cruiser-board-longboard-skateboard-02.jpg" />
+    <Content Include="Resources\Images\bamboo-pinner-vlam-landyachtz-cruiser-board-longboard-skateboard-03.jpg" />
+    <Content Include="Resources\Images\bamboo-pinner-vlam-landyachtz-cruiser-board-longboard-skateboard-05.jpg" />
+    <Content Include="Resources\Images\bamboo-red-road-second-view_1.jpg" />
+    <Content Include="Resources\Images\bamboo-stout-second-view_1.jpg" />
+    <Content Include="Resources\Images\battle-axe-40-cougar-landyachtz-cruiser-board-longboard-drop-mount-pintail-skateboard-01.jpg" />
+    <Content Include="Resources\Images\battle-axe-40-cougar-landyachtz-cruiser-board-longboard-drop-mount-pintail-skateboard-02.jpg" />
+    <Content Include="Resources\Images\battle-axe-40-cougar-landyachtz-cruiser-board-longboard-drop-mount-pintail-skateboard-03.jpg" />
+    <Content Include="Resources\Images\battle-axe-40-cougar-landyachtz-cruiser-board-longboard-drop-mount-pintail-skateboard-05.jpg" />
+    <Content Include="Resources\Images\ba_boo-pinner--view-02.jpg" />
+    <Content Include="Resources\Images\black_hoodie_with_bluestar_big.jpg" />
+    <Content Include="Resources\Images\black_landyachtz_skate_explore_hoodie_1.jpg" />
+    <Content Include="Resources\Images\chief-floral-landyachtz-cruiser-board-longboard-pintail-skateboard-01.jpg" />
+    <Content Include="Resources\Images\chief-floral-landyachtz-cruiser-board-longboard-pintail-skateboard-02.jpg" />
+    <Content Include="Resources\Images\chief-floral-landyachtz-cruiser-board-longboard-pintail-skateboard-03.jpg" />
+    <Content Include="Resources\Images\chief-floral-landyachtz-cruiser-board-longboard-pintail-skateboard-04.jpg" />
+    <Content Include="Resources\Images\drop-carve-40-oceanspray-landyachtz-cruiser-board-longboard-drop-mount-kicktail-skateboard-01_1.jpg" />
+    <Content Include="Resources\Images\drop-carve-40-oceanspray-landyachtz-cruiser-board-longboard-drop-mount-kicktail-skateboard-02_1.jpg" />
+    <Content Include="Resources\Images\drop-carve-40-oceanspray-landyachtz-cruiser-board-longboard-drop-mount-kicktail-skateboard-03_1.jpg" />
+    <Content Include="Resources\Images\drop-carve-40-oceanspray-landyachtz-cruiser-board-longboard-drop-mount-kicktail-skateboard-05_1.jpg" />
+    <Content Include="Resources\Images\drop-hammer-blue-jay-landyachtz-cruiser-board-longboard-drop-mount-skateboard-01.jpg" />
+    <Content Include="Resources\Images\drop-hammer-blue-jay-landyachtz-cruiser-board-longboard-drop-mount-skateboard-02.jpg" />
+    <Content Include="Resources\Images\drop-hammer-blue-jay-landyachtz-cruiser-board-longboard-drop-mount-skateboard-03.jpg" />
+    <Content Include="Resources\Images\drop-hammer-blue-jay-landyachtz-cruiser-board-longboard-drop-mount-skateboard-05.jpg" />
+    <Content Include="Resources\Images\drop-hammer-cardinal-landyachtz-cruiser-board-longboard-drop-mount-skateboard-01.jpg" />
+    <Content Include="Resources\Images\drop-hammer-cardinal-landyachtz-cruiser-board-longboard-drop-mount-skateboard-02.jpg" />
+    <Content Include="Resources\Images\drop-hammer-cardinal-landyachtz-cruiser-board-longboard-drop-mount-skateboard-03.jpg" />
+    <Content Include="Resources\Images\drop-hammer-cardinal-landyachtz-cruiser-board-longboard-drop-mount-skateboard-05.jpg" />
+    <Content Include="Resources\Images\frog_fm.png" />
+    <Content Include="Resources\Images\gloves-zeebra-angles.jpg" />
+    <Content Include="Resources\Images\logo.png" />
+    <Content Include="Resources\Images\mini-chief-feather-second-view.jpg" />
+    <Content Include="Resources\Images\mini_zombies_-_family.jpg" />
+    <Content Include="Resources\Images\preadator-helmet-black.jpg" />
+    <Content Include="Resources\Images\preadator-helmet-blue.jpg" />
+    <Content Include="Resources\Images\preadator-helmet-green.jpg" />
+    <Content Include="Resources\Images\preadator-helmet-red-02.jpg" />
+    <Content Include="Resources\Images\preadator-helmet-red.jpg" />
+    <Content Include="Resources\Images\preadator-helmet-white.jpg" />
+    <Content Include="Resources\Images\ripper-tropic-nights-landyachtz-cruiser-board-longboard-kicktail-skateboard-01_1.jpg" />
+    <Content Include="Resources\Images\ripper-tropic-nights-landyachtz-cruiser-board-longboard-kicktail-skateboard-02.jpg" />
+    <Content Include="Resources\Images\ripper-tropic-nights-landyachtz-cruiser-board-longboard-kicktail-skateboard-03.jpg" />
+    <Content Include="Resources\Images\ripper-tropic-nights-landyachtz-cruiser-board-longboard-kicktail-skateboard-04.jpg" />
+    <Content Include="Resources\Images\ripper-tropical-second-view.jpg" />
+    <Content Include="Resources\Images\web---73mm-biggies---angles.jpg" />
+    <Content Include="Resources\Images\web---bear-crew---inside.jpg" />
+    <Content Include="Resources\Images\web-gen5-inside-family-edit.jpg" />
+    <Content Include="Resources\Images\web-gen5-special-main-family_1.jpg" />
+    <Content Include="Resources\Images\web-gen5special-inside.jpg" />
+    <Content Include="Resources\Images\web-grizz852gold-inside.jpg" />
+    <Content Include="Resources\Images\web-grizzly845-inside.jpg" />
+    <Content Include="Resources\Images\web-kodiak-inside2_1.jpg" />
+    <Content Include="Resources\Images\web-kodiak-inside_1.jpg" />
+    <Content Include="Resources\Images\web-main-angle-kodiak-160mm-red.jpg" />
+    <Content Include="Resources\Images\web-main-face-kodiak-160mm-red.jpg" />
+    <Content Include="Resources\Images\web-polar-130-inside.jpg" />
+    <Content Include="Resources\Images\web-polar-155-inside.jpg" />
+    <Content Include="Resources\Images\web-polar-155t-inside.jpg" />
+    <Content Include="Resources\Images\web-polar-180-inside.jpg" />
+    <Content Include="Resources\Images\web-polar85mm-inside.jpg" />
+    <Content Include="Resources\Images\web-precisions-inside.jpg" />
+    <Content Include="Resources\Images\web-space-balls-ceramic-angles.jpg" />
+    <Content Include="Resources\Images\web-spirit-gloves-inside.jpg" />
+    <Content Include="Resources\Images\web_-_63mm-fatty_-_angles.jpg" />
+    <Content Include="Resources\Images\web_-_70mm-yates_-_angles.jpg" />
+    <Content Include="Resources\Images\web_-_76mm-zombies_-_angles.jpg" />
+    <Content Include="Resources\Images\web_-_bamboo_pinner_red_road_-_angles_2.jpg" />
+    <Content Include="Resources\Images\web_-_bearings_-_angles.jpg" />
+    <Content Include="Resources\Images\web_-_bones_gloves_-_inside.jpg" />
+    <Content Include="Resources\Images\web_-_cat_gloves_-_inside.jpg" />
+    <Content Include="Resources\Images\web_-_chief_-_feather_-_angles.jpg" />
+    <Content Include="Resources\Images\web_-_comic_gloves_-_inside.jpg" />
+    <Content Include="Resources\Images\web_-_crew_heather_-_inside.jpg" />
+    <Content Include="Resources\Images\web_-_crew_heather_-_inside2.jpg" />
+    <Content Include="Resources\Images\web_-_leather_gloves_-_inside.jpg" />
+    <Content Include="Resources\Images\web_-_pizza_gloves_-_inside.jpg" />
+    <Content Include="Resources\Images\web_-_ripper_-_tropical_-_angles_1.jpg" />
+    <Content Include="Resources\Images\web_-_spaceballs_-_inside.jpg" />
+    <Content Include="Resources\Images\web_-_space_gloves_-_inside.jpg" />
+    <Content Include="Resources\Images\web_-_tool_-_angles.jpg" />
+    <Content Include="Resources\Images\web_60mm-chubbies-green_1.jpg" />
+    <Content Include="Resources\Images\web_60mm-chubbies-red.jpg" />
+    <Content Include="Resources\Images\web_60mm-chubbies-white.jpg" />
+    <Content Include="Resources\Images\web_ghf_boss_both_1.jpg" />
+    <Content Include="Resources\Images\web_hawgs_logo_crew_inside.jpg" />
+    <Content Include="Resources\Images\web_hawgs_logo_hoodie_inside.jpg" />
+    <Content Include="Resources\Images\web_ly_baseball_crew_inside.jpg" />
+    <Content Include="Resources\Images\web_ly_logo_hoodie_white_inside.jpg" />
+    <Content Include="Resources\Images\WIN_20161220_22_20_28_Pro.jpg" />
+    <Content Include="Resources\Images\WIN_20161220_22_20_30_Pro.jpg" />
+    <Content Include="Scripts\cart.js" />
+    <Content Include="Scripts\comments.js" />
+    <Content Include="Scripts\details.js" />
+    <Content Include="Scripts\dropdown.js" />
+    <Content Include="Scripts\footer.js" />
+    <Content Include="Scripts\jquery.fancybox-buttons.js" />
+    <Content Include="Scripts\jquery.fancybox-media.js" />
+    <Content Include="Scripts\jquery.fancybox-thumbs.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\listToGrid.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\Validation.js" />
+    <Content Include="Stylesheet\accountServicesStyle.css" />
+    <Content Include="Stylesheet\bootstrap-theme.css" />
+    <Content Include="Stylesheet\bootstrap-theme.min.css" />
+    <Content Include="Stylesheet\bootstrap.css" />
+    <Content Include="Stylesheet\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Stylesheet\bootstrap.min.css.map" />
+    <Content Include="Stylesheet\bootstrap.css.map" />
+    <Content Include="Stylesheet\bootstrap-theme.min.css.map" />
+    <Content Include="Stylesheet\bootstrap-theme.css.map" />
+    <Content Include="ImageHandler.ashx" />
+    <Content Include="Resources\Images.rar" />
+    <Content Include="Resources\Images\WIN_20161220_22_20_28_Pro.jpg1" />
+    <Content Include="Resources\Images\WIN_20161220_22_20_30_Pro.jpg1" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Stylesheet\changePassword.css" />
+    <Content Include="Stylesheet\comments.css" />
+    <Content Include="Stylesheet\details.css" />
+    <Content Include="Stylesheet\errorPage.css" />
+    <Content Include="Stylesheet\home.css" />
+    <Content Include="Stylesheet\manageCart.css" />
+    <Content Include="Stylesheet\navbar.css" />
+    <Content Include="Stylesheet\notFoundPage.css" />
+    <Content Include="Stylesheet\productList.css" />
+    <Content Include="Stylesheet\products-display.css" />
+    <Content Include="Stylesheet\register.css" />
+    <Content Include="Stylesheet\style.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\Log4NetExceptionHandler.cs" />
+    <Compile Include="App_Start\SimpleInjectorConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\CommentsModel.cs" />
+    <Compile Include="Models\DetailsModel.cs" />
+    <Compile Include="Models\DisplayModel.cs" />
+    <Compile Include="Models\LatestProductsModel.cs" />
+    <Compile Include="Models\NavbarModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UpdateUserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Account\Update.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Shared\_Content.cshtml" />
+    <Content Include="Views\Shared\_Paging.cshtml" />
+    <Content Include="Views\Shared\_DisplayProducts.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Shared\_Comments.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Shared\_RateAuthenticated.cshtml" />
+    <Content Include="Views\Cart\ManageCart.cshtml" />
+    <Content Include="Views\Shared\_FilterControls.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\InternalServerError.cshtml" />
+    <Content Include="Views\Product\TestView.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Gear\Helmets\" />
+    <Folder Include="Content\Images\Longboards\Decks\" />
+    <Folder Include="Content\Images\Longboards\Trucks\" />
+    <Folder Include="Content\Images\Longboards\Wheels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LOS.Bussiness\LOS.Bussiness.csproj">
+      <Project>{3b34909e-da89-4470-9758-fb231028ce90}</Project>
+      <Name>LOS.Bussiness</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55349</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55349/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

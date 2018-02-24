@@ -1,0 +1,19 @@
+﻿#form {
+	background-color: #3d4966;
+	padding: 2em;
+	padding-bottom: 2em;
+	border-radius: 5px;
+}
+
+#submit {
+	width: 100%;
+	font-weight: bold;
+	margin-top: 40px;
+	margin-bottom: 0px;
+}
+
+#errors {
+	clear: both;
+	width: 100%;
+	margin: 5% auto;
+}

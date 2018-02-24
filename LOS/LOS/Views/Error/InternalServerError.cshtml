@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Server Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Stylesheet/errorPage.css" rel="stylesheet" />
+
+<div id="message-container">
+	<h2 id="message">Whoops! Something went wrong.</h2>
+	<p id="message">If the problem persists, please try again later. We're sorry for the inconvenience!</p>
+	<div style="text-align: center;">@Html.ActionLink("Return Home", "Index", "Home", null, new { style = "text-align: center;", @class = "btn btn-default" })</div>
+</div>

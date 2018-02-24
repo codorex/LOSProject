@@ -1,0 +1,104 @@
+﻿@model LOS.Models.DisplayModel
+@{ 
+	string keyword = Model.keyword;
+	string sort = Model.sort;
+}
+@{
+	if (sort == "price_asc")
+	{
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="price_desc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Price
+			</button>
+		</li>
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="name_asc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Name
+			</button>
+		</li>
+	}
+	else if (sort == "price_desc")
+	{
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="price_asc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-down">
+				</span>Price
+			</button>
+		</li>
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="name_asc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Name
+			</button>
+		</li>
+	}
+	else if (sort == "name_asc")
+	{
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="price_desc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Price
+			</button>
+		</li>
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="name_desc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-down">
+				</span>Name
+			</button>
+		</li>
+	}
+	else if (sort == "name_desc")
+	{
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="price_desc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Price
+			</button>
+		</li>
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="name_asc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Name
+			</button>
+		</li>
+	}
+	else if (sort == "")
+	{
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="price_desc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Price
+			</button>
+		</li>
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="name_asc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Name
+			</button>
+		</li>
+	}
+	else if (sort == "topRated")
+	{
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="price_desc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Price
+			</button>
+		</li>
+		<li>
+			<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="name_asc", keyword = Model.keyword})'">
+				<span class="glyphicon glyphicon-chevron-up">
+				</span>Name
+			</button>
+		</li>
+	}
+	<li>
+		<button type="button" id="desc" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="topRated", keyword = Model.keyword})'">
+			<span class="glyphicon glyphicon-stats">
+			</span>
+			Top Rated
+		</button>
+	</li>
+}

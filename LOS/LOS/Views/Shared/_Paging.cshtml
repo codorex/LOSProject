@@ -1,0 +1,26 @@
+﻿@model LOS.Models.DisplayModel
+@{ 
+	string keyword = Model.keyword;
+	string sortBy = Model.sort;
+}
+<div style="display: inline-block;">
+	<div class="btn-toolbar demoPadder" role="toolbar" aria-label="Toolbar with button groups">
+		<div class="btn-group" role="group" aria-label="First group">
+			<ul>
+				@{
+					for (int i = 1; i <= Model.PageCount; i++)
+					{
+						if (Model.PageNumber == i)
+						{
+							<li><h2>@Html.ActionLink(i.ToString(), "Index", new { page = i }, new { @class = "btn btn-default", style = "pointer-events:none;box-shadow: white 0px 0px 10px 0px;" })</h2></li>
+						}
+						else
+						{
+							<li><h2>@Html.ActionLink(i.ToString(), "Index", new { page = i, keyword=keyword, sort = sortBy }, new {id="pageBtn", @class = "btn btn-danger" })</h2></li>
+						}
+					}
+				}
+			</ul>
+		</div>
+	</div>
+</div>

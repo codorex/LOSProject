@@ -1,0 +1,40 @@
+﻿#comments-container {
+	background-color: #424e6b;
+	border: none;
+	color: white;
+}
+
+#userComment {
+	background-color: #4a5878;
+	color: white;
+	border: none;
+	max-height: 50px;
+	max-width: 400px;
+	min-height: 50px;
+	min-width: 400px;
+}
+
+#addComment {
+	margin-left: 1em;
+	font-size: 15px;
+}
+
+#deleteComment {
+	text-decoration: none;
+	margin-right: 10px;
+	border: none;
+	background-color: #D02E46;
+}
+
+.well {
+	width: 100%;
+}
+
+.col-lg-4 col-sm-6 text-center {
+	width: 100px;
+}
+
+#comment-box {
+	padding: 5vh;
+	background-color: #4a5878;
+}

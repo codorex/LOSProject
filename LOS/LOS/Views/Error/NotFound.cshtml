@@ -1,0 +1,13 @@
+﻿
+@{
+	ViewBag.Title = "Page Not Found";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Stylesheet/errorPage.css" rel="stylesheet" />
+
+<div id="message-container">
+	<h2 id="message">Page not found! </h2>
+	<p id="message">Are you sure you got the correct address?</p>
+	<div style="text-align: center;">@Html.ActionLink("Return Home", "Index", "Home", null, new { style = "text-align: center;", @class= "btn btn-default" })</div>
+</div>
+

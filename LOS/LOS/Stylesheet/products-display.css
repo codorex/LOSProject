@@ -1,0 +1,39 @@
+﻿#back-to-top {
+	border-radius: 60px;
+	box-shadow: black 0px 0px 20px 0px;
+}
+
+#products {
+	border-radius: 20px;
+	box-shadow: black 0px 0px 40px 0px;
+}
+
+#product-content {
+	border-radius: 20px;
+	background-color: rgb(56, 66, 89);
+}
+
+#productThumbnail {
+	border-radius: 10px;
+	max-width: 20vw;
+	max-height: 20vw;
+}
+
+#product-name {
+	padding-top: 20px;
+	color: white;
+}
+
+#product-details {
+	background-color: #303a52;
+	pointer-events: none;
+	cursor: default;
+}
+
+#rating {
+	border: none;
+	background: none;
+	color: gold;
+	margin-left: -5px;
+	pointer-events: none;
+}

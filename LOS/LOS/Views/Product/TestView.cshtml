@@ -1,0 +1,13 @@
+﻿@model List<LOS.Bussiness.Entities.File>
+@{
+    ViewBag.Title = "TestView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TestView</h2>
+<div style="margin-top: 90px;">
+	@foreach (var file in Model)
+	{
+		<img src="~/ImageHandler.ashx?id=@file.FileID"/>
+	}
+</div>

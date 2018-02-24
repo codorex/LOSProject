@@ -1,0 +1,14 @@
+﻿@model LOS.Models.DisplayModel
+
+@{
+	ViewBag.Title = "Shop | " + Model.Category.Name + " - Page " + Model.PageNumber;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/listToGrid.js"></script>
+<link href="~/Stylesheet/productList.css" rel="stylesheet" />
+<div class="container" align="center" style="margin-top: 50px;">
+	<div id="ajaxTarget">
+		@{ Html.RenderPartial("_Content", Model); }
+	</div>
+</div>
+

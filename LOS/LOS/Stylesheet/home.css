@@ -1,0 +1,53 @@
+﻿#carousel-container {
+	padding: 2em;
+	border-radius: 15px;
+}
+
+#container {
+	margin-top: 60px;
+	max-width: 80vh;
+}
+
+#carousel-product-name {
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+#carousel-item {
+	border: none;
+	border-radius: 15px;
+}
+
+#carousel-control-glyph {
+	box-shadow: black 0px 0px 20px 0px;
+}
+
+#products-row {
+	background-color: #303a52;
+	margin: 0 auto;
+}
+
+#products-item {
+	width: 20em;
+	min-height: 200px;
+}
+
+#products-item-name {
+	padding-top: 20px;
+	color: white;
+}
+
+#products-thumbnail {
+	border-radius: 15px;
+	background-color: none;
+}
+
+#rating-star {
+	border: none;
+	background: none;
+	color: gold;
+	margin-left: -5px;
+	pointer-events: none;
+}
