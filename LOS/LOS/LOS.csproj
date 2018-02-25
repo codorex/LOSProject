@@ -343,6 +343,7 @@
     <Content Include="Resources\Images.rar" />
     <Content Include="Resources\Images\WIN_20161220_22_20_28_Pro.jpg1" />
     <Content Include="Resources\Images\WIN_20161220_22_20_30_Pro.jpg1" />
+    <None Include="Properties\PublishProfiles\longboardsonlinestore - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
