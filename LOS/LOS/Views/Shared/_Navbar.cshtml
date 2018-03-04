@@ -18,7 +18,7 @@
 		</div>
 
 		<div class="collapse navbar-collapse js-navbar-collapse" id="navbar-wrap">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" id="categories-dropdown">
 				<li>
 				</li>
 				<li>@Html.ActionLink("HOME", "Index", "Home", null, new { id = "navbar-button", style = "border-left: solid #d1253f;" })</li>
@@ -43,7 +43,7 @@
 					</ul>
 				</li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right" id="signin-dropdown">
 				@{
 					if (User.Identity.Name == "")
 					{

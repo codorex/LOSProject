@@ -97,29 +97,42 @@ button {
 	top: 80px;
 }
 
-.btn.stats-btn{
+.btn.stats-btn {
 	border-radius: 60px;
-	background-color: white;
-	box-shadow: black 0px 0px 20px -3px;
+	background-color: #687187;
+	color: white;
+	box-shadow: black 0px 0px 20px -10px;
 }
 
 .user-stats-wrapper {
 	display: none;
 	position: absolute;
 	right: 0px;
-	top: 40px;
-	background-color: white;
+	top: 45px;
+	background-color: #414e6e;
 	padding: 5px;
 	text-align: center;
 	min-width: 300px;
 	min-height: 50px;
 	max-height: 450px;
 	overflow-y: auto;
-	box-shadow: black 0px 0px 20px -3px;
 	border-radius: 5px;
 	cursor: default;
 }
 
+.user-stats-wrapper h3{
+	color: white;
+}
+
+	.user-stats-wrapper li {
+		background-color: #687187;
+		color: white;
+		border: none;
+	}
+		.user-stats-wrapper li:hover {
+			background-color: #8c95ac;
+			border: none;
+		}
 .user-stats-ratedProducts-container, .user-stats-reviewedProducts-container{
 	display: none;
 	max-height: 300px;
@@ -134,10 +147,15 @@ button {
 	cursor: pointer !important;
 }
 
-.ratedProduct{
+.ratedProduct {
 	text-align: left !important;
+	
 	cursor: pointer;
 }
+
+	.ratedProduct:hover {
+		background-color: #96a2bf !important;
+	}
 
 #filterControl {
 	background-color: #384259;
