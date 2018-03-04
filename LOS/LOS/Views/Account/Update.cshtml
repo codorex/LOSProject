@@ -4,6 +4,7 @@
 	ViewBag.Title = "Manage Account";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 	int ratedProductsCount = Model.RatedProducts.Count;
+	int reviewedProductsCount = Model.ReviewedProducts.Count;
 }
 
 <link href="~/Stylesheet/accountServicesStyle.css" rel="stylesheet" />
@@ -18,12 +19,29 @@
 				</div>
 				<div>
 					<ul class="list-group">
-						<li class="list-group-item">
-							<strong>Products reviewed: </strong>@Model.ProductReviews
+						<li class="list-group-item reviewedProduct-button" onclick="expandReviewedProducts()">
+							<div class="product-list-header">
+								<strong>Products reviewed: </strong>@reviewedProductsCount
+								<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+							</div>
+							<div class="user-stats-reviewedProducts-container">
+								<div>
+									<ul class="list-group">
+										@foreach (var product in Model.ReviewedProducts)
+										{
+											<li class="list-group-item ratedProduct" onclick="openProduct('@product.ProductID')">
+												@product.Name <span class="glyphicon glyphicon-export pull-right"></span>
+											</li>
+										}
+									</ul>
+								</div>
+							</div>
 						</li>
-						<li class="list-group-item ratedProducts-button"  onclick="expandRatedProducts()">
-							<strong>Products rated: </strong>@ratedProductsCount
-							<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+						<li class="list-group-item ratedProducts-button" onclick="expandRatedProducts()">
+							<div class="product-list-header">
+								<strong>Products rated: </strong>@ratedProductsCount
+								<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+							</div>
 							<div class="user-stats-ratedProducts-container">
 								<div>
 									<ul class="list-group">
@@ -58,19 +76,19 @@
 							{
 								<div class="input-group">
 									<label for="firstname" style="width: 100%;padding-bottom: 10px;">First name: @Html.TextBoxFor(x => x.FirstName, new { type = "text", id = "firstname", @class = "form-control", placeholder = "First Name", style = "background-color: #687187; color: white; border: none; width: 100%;" })</label>
-									
+
 									<label for="lastname" style="width: 100%;padding-bottom: 10px;">Last name: @Html.TextBoxFor(x => x.LastName, new { type = "text", id = "lastname", @class = "form-control", placeholder = "Last Name", style = "background-color: #687187; color: white; border: none;" })</label>
-									
+
 									<label for="username" style="width: 100%;padding-bottom: 10px;">Username: @Html.TextBoxFor(x => x.Username, new { type = "text", id = "username", @class = "form-control", placeholder = "Username", style = "background-color: #687187; color: white; border: none; width: 100%;" })</label>
 
 									<label for="email" style="width: 100%;padding-bottom: 10px;">Email: @Html.TextBoxFor(x => x.Email, new { type = "email", id = "email", @class = "form-control", placeholder = "Email Adress", @readonly = "readonly", style = "background-color: #525c74; color: white; border: none;" })</label>
-									
+
 									<a href="/Account/ChangePassword" id="changePasswordBtn" class="btn btn-danger" style="width: 100%;text-decoration:solid; margin-top: -1vh;">Change Password  <span class="glyphicon glyphicon-lock"></span></a>
 									<div style="height: 60px;"></div>
 									<input type="submit" id="update" class="btn btn-danger pull-right" style="width: 100%; margin-bottom: -75px;" value="Save Changes">
 								</div>
 							}
-							
+
 							<div style="clear:both; width: 100%; margin: 10% auto;" id="errors">
 
 							</div>

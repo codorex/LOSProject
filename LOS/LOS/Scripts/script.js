@@ -1,5 +1,6 @@
 ﻿var statsExpanded = false;
 var ratedProductsExpanded = false;
+var reviewedProductsExpanded = false;
 
 $(function () {
 	$('.ratedProduct').on('click', function (e) {
@@ -91,12 +92,31 @@ function showStats() {
 function expandRatedProducts() {
 	if (!ratedProductsExpanded) {
 		$('.user-stats-ratedProducts-container').slideDown(300);
+		$('.ratedProducts-button .product-list-header').css('padding-bottom', '10px');
+		$('.ratedProducts-button .glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
 	}
 	else {
 		$('.user-stats-ratedProducts-container').slideUp(300);
+		$('.ratedProducts-button .product-list-header').css('padding-bottom', '0px');
+		$('.ratedProducts-button .glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
 	}
 
 	ratedProductsExpanded = !ratedProductsExpanded;
+}
+
+function expandReviewedProducts() {
+	if (!reviewedProductsExpanded) {
+		$('.user-stats-reviewedProducts-container').slideDown(300);
+		$('.reviewedProduct-button .product-list-header').css('padding-bottom', '10px');
+		$('.reviewedProduct-button .glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+	}
+	else {
+		$('.user-stats-reviewedProducts-container').slideUp(300);
+		$('.reviewedProduct-button .product-list-header').css('padding-bottom', '0px');
+		$('.reviewedProduct-button .glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+	}
+
+	reviewedProductsExpanded = !reviewedProductsExpanded;
 }
 
 function openProduct(id) {

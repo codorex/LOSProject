@@ -50,6 +50,12 @@ namespace LOS.Bussiness.Services.CommentServices
 			return await context.Comments.Where(c => c.ProductID == id).OrderByDescending(c => c.CommentID).ToListAsync();
 		}
 
+		public async Task<List<Product>> GetReviewedProductsForUserAsync(string userId)
+		{
+			List<Product> result = await context.Products.Where(p => context.Comments.Where(c => c.UserID == userId && c.ProductID == p.ProductID).Any()).ToListAsync();
+			return result;
+		}
+
 		public async Task<int> GetCommentsCountForUserAsync(string userId)
 		{
 			int result = await context.Comments.Where(c => c.UserID == userId).CountAsync();

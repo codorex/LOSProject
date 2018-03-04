@@ -112,6 +112,7 @@ namespace LOS.Controllers
 		public async Task<ActionResult> Update(UpdateUserModel model)
 		{
 			List<Product> ratedProducts = await productService.GetRatedProductsForUserAsync(User.Identity.GetUserId());
+			List<Product> reviewedProducts = await commentService.GetReviewedProductsForUserAsync(User.Identity.GetUserId());
 
 			if (!User.Identity.IsAuthenticated)
 			{
@@ -130,6 +131,7 @@ namespace LOS.Controllers
 				model.LastName = user.LastName;
 				model.ProductReviews = productReviews;
 				model.RatedProducts = ratedProducts;
+				model.ReviewedProducts = reviewedProducts;
 
 				return View(model);
 			}
