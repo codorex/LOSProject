@@ -47,7 +47,7 @@ namespace LOS.Controllers
 		[HttpPost]
 		[AllowAnonymous]
 		[ActionName("Login")]
-		public async Task LoginPost(string username, string password)
+		public async Task<JsonResult> LoginPost(string username, string password)
 		{
 			ApplicationUser user = userManager.Users.SingleOrDefault(x => x.UserName == username);
 
@@ -59,7 +59,12 @@ namespace LOS.Controllers
 				userIdentity.AddClaim(new Claim("Role", user.Role));
 				
 				Request.GetOwinContext().Authentication.SignIn(userIdentity);
+
+				return Json(new { message = 202 });
 			}
+
+			throw new ArgumentException("Login Failed! Invalid Credentials.");
+			return Json(new { message = "Login Failed! Invalid Credentials." });
 		}
 
 		[HttpPost]

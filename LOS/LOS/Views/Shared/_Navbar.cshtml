@@ -47,9 +47,10 @@
 				@{
 					if (User.Identity.Name == "")
 					{
-						<li class="dropdown" id="account-dropdown">
-							@Html.ActionLink("Sign In", "Login", "Account", null, new { data_toggle = "dropdown" })
+						<li class="dropdown" id="account-dropdown" onclick="expandAccountDropdown()">
+							@Html.ActionLink("Sign In", "Login", "Account", null, new { style="pointer-events: none;" })
 							<div class="dropdown-menu" id="dropdown-menu">
+								<div class="pull-right account-dropdown-close-btn" onclick="expandAccountDropdown()"><span class="glyphicon glyphicon-remove"></span></div>
 								<center><h3>Sign In</h3></center>
 								@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "loginForm" }))
 								{
@@ -60,7 +61,7 @@
 										<input id="usernameFake" style="display:none" type="text" name="fakeusernameremembered">
 										@Html.TextBoxFor(x => x.Password, new { type = "password", id = "password", @class = "form-control", placeholder = "Password", autocomplete = "off" })
 										<input id="passwordfake" style="display:none" type="password" name="fakepasswordremembered">
-										<input type="button" id="login" class="btn btn-danger" value="Sign In">
+										<button id="login" class="btn btn-danger">Sign In</button>
 									</div>
 									<div id="text-danger-email"></div>
 									<div id="text-danger-password"></div>

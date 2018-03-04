@@ -1,13 +1,12 @@
-﻿$(function () {
-	$('.dropdown-menu').css("visibility", "visible");
-	$(".dropdown").hover(		
-		function () {
-			$('.dropdown-menu', this).stop(true, true).slideDown(200);
-			$(this).toggleClass('open');
-		}
-		,
-		function () {
-			$('.dropdown-menu', this).stop(true, true).slideUp(200);
-			$(this).toggleClass('open');
-		});
-});
+﻿var accountDropdownExpanded = false;
+
+function expandAccountDropdown() {
+	if (!accountDropdownExpanded) {
+		$('.dropdown-menu').show(300);
+	}
+	else {
+		$('.dropdown-menu').hide(300);
+	}
+
+	accountDropdownExpanded = !accountDropdownExpanded;
+}

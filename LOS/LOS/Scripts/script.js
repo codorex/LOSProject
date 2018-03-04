@@ -7,7 +7,11 @@ $(function () {
 		e.stopPropagation();
 	});
 
-	$("#login").click(function () {
+	$('#dropdown-menu').on('click', function (e) {
+		e.stopPropagation();
+	});
+
+	$("#login").on('click', function () {
 		var username = document.getElementById("username").value;
 		var password = document.getElementById("password").value;
 
@@ -15,7 +19,7 @@ $(function () {
 			var pattern = new RegExp("[A-Za-z0-9]{8,20}");
 
 			if (!pattern.test(password)) {
-				document.getElementById("text-danger").innerHTML += "<h5 style='color: darkred;'>Invalid Password</h5>";
+				document.getElementById("text-danger-password").innerHTML += "<h5 style='color: darkred;'>Invalid Password</h5>";
 				$("#password").css({ "border": "2px solid darkred" });
 			}
 			else {
@@ -32,8 +36,9 @@ $(function () {
 				location.reload(true);
 			},
 			error: function (data) {
-				document.getElementById("text-danger").innerHTML += "<h5 style='color: darkred;'>Invalid Password</h5>";
+				document.getElementById("text-danger-email").innerHTML = "<h5 style='color: red;'>Login Failed. Invalid Credentials!</h5>";
 				$("#password").css({ "border": "2px solid darkred" });
+				$("#username").css({ "border": "2px solid darkred" });
 
 				return false;
 			}

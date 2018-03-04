@@ -79,7 +79,7 @@ function validatePassword(password) {
 	return false;
 }
 
-$("#login").click(function () {
+$("#login").on('click', function () {
 	var password = document.getElementById("password").value;
 
 	if (validatePassword(password) === false) {

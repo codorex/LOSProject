@@ -145,6 +145,10 @@ button {
 	border: none;
 }
 
+.account-dropdown-close-btn {
+	cursor: pointer;
+}
+
 #changePasswordBtn {
 	background-color: #5cf6aa;
 	color: #303a52;
@@ -160,7 +164,16 @@ button {
 	#account-dropdown{
 		width: 200px;
 		text-align: center;
+		cursor: pointer;
 	}
+
+	.dropdown-menu{
+		cursor: default;
+	}
+
+#account-dropdown {
+	right: 10px;
+}
 
 #notification {
 	bottom: 20px;
