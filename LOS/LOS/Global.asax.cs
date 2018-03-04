@@ -26,6 +26,7 @@ namespace LOS
         }
 
 		protected void Application_AuthenticateRequest(object sender, EventArgs e)
+
 		{
 			string authCookie = FormsAuthentication.FormsCookieName;
 			string path = HttpContext.Current.Request.Path;

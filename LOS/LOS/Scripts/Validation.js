@@ -81,15 +81,6 @@ function validatePassword(password) {
 
 $("#login").click(function () {
 	var password = document.getElementById("password").value;
-	var email = document.getElementById("email").value;
-
-	if (validateEmail(email) === false) {
-		document.getElementById("text-danger-email").innerHTML = "<h5 style='color: darkred;'>Email must be valid! Check your spelling</h5>";
-	}
-	else {
-		$("#email").css({ "border": "1px solid lightgrey" });
-		document.getElementById("text-danger-password").innerHTML = "";
-	}
 
 	if (validatePassword(password) === false) {
 		document.getElementById("text-danger-password").innerHTML = "<h5 style='color: darkred;'>Invalid Password</h5>";
@@ -99,7 +90,7 @@ $("#login").click(function () {
 		document.getElementById("text-danger-password").innerHTML = "";
 	}
 
-	if (validateEmail(email) & validatePassword(password)) {
+	if (validatePassword(password)) {
 		return true;
 	}
 	return false;

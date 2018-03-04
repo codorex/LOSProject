@@ -25,7 +25,7 @@ $(function () {
 		}
 
 		$.ajax({
-			url: "/Account/Login",
+			url: "/account/login",
 			type: 'POST',
 			data: { "username": username, "password": password },
 			success: function (data) {
@@ -55,10 +55,12 @@ $(function () {
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-	if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-		document.getElementById("backToTop").style.display = "block";
-	} else {
-		document.getElementById("backToTop").style.display = "none";
+	if (document.getElementById("backToTop")) {
+		if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+			document.getElementById("backToTop").style.display = "block";
+		} else {
+			document.getElementById("backToTop").style.display = "none";
+		}
 	}
 }
 

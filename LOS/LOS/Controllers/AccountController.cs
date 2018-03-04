@@ -37,9 +37,17 @@ namespace LOS.Controllers
 			return View();
 		}
 		
+		[HttpGet]
+		[AllowAnonymous]
+		public ActionResult Login(string username = "", string password = "")
+		{
+			return RedirectToAction("Index", "Home", null);
+		}
+
 		[HttpPost]
 		[AllowAnonymous]
-		public async Task Login(string username, string password)
+		[ActionName("Login")]
+		public async Task LoginPost(string username, string password)
 		{
 			ApplicationUser user = userManager.Users.SingleOrDefault(x => x.UserName == username);
 
@@ -102,7 +110,7 @@ namespace LOS.Controllers
 				log.Info("Registered user: " + user.UserName + "\n Role: " + user.Role);
 			}
 
-			await Login(user.UserName, model.Password);
+			await LoginPost(user.UserName, model.Password);
 
 			return Redirect(model.ReturnUrl);
 		}
