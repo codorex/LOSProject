@@ -91,6 +91,52 @@ button {
 	padding: 10px;
 }
 
+.user-stats-button{
+	position: fixed;
+	right: 30px;
+	top: 80px;
+}
+
+.btn.stats-btn{
+	border-radius: 60px;
+	background-color: white;
+	box-shadow: black 0px 0px 20px -3px;
+}
+
+.user-stats-wrapper {
+	display: none;
+	position: absolute;
+	right: 0px;
+	top: 40px;
+	background-color: white;
+	padding: 5px;
+	text-align: center;
+	min-width: 300px;
+	min-height: 50px;
+	box-shadow: black 0px 0px 20px -3px;
+	border-radius: 5px;
+	cursor: default;
+}
+
+.user-stats-ratedProducts-container{
+	display: none;
+	max-height: 300px;
+	overflow-y: scroll;
+}
+
+.list-group-item {
+	cursor: default;
+}
+
+.ratedProducts-button{
+	cursor: pointer !important;
+}
+
+.ratedProduct{
+	text-align: left !important;
+	cursor: pointer;
+}
+
 #filterControl {
 	background-color: #384259;
 	color: white;

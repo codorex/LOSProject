@@ -43,5 +43,7 @@ namespace LOS.Bussiness.Services.ProductServices
 		Task<bool> CheckIfImageExistsAsync(Image image);
 
 		Task<Entities.File> GetFileByNameAsync(string fileName);
+
+		Task<List<Product>> GetRatedProductsForUserAsync(string userId);
 	}
 }

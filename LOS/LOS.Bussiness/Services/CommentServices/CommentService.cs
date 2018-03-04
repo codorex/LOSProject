@@ -50,6 +50,13 @@ namespace LOS.Bussiness.Services.CommentServices
 			return await context.Comments.Where(c => c.ProductID == id).OrderByDescending(c => c.CommentID).ToListAsync();
 		}
 
+		public async Task<int> GetCommentsCountForUserAsync(string userId)
+		{
+			int result = await context.Comments.Where(c => c.UserID == userId).CountAsync();
+
+			return result;
+		}
+
 		public async Task<List<Comment>> GetListAsync(int pageNumber, int pageSize)
         {
             List<Comment> comments = await context.Comments.OrderBy(c => c.CommentID).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();

@@ -1,23 +1,27 @@
-﻿$(function () {
-	
-});
+﻿var statsExpanded = false;
+var ratedProductsExpanded = false;
 
-$("#login").click(function () {
-	var username = document.getElementById("username").value;
-	var password = document.getElementById("password").value;
+$(function () {
+	$('.ratedProduct').on('click', function (e) {
+		e.stopPropagation();
+	});
 
-	function validatePassword() {
-		var pattern = new RegExp("[A-Za-z0-9]{8,20}");
+	$("#login").click(function () {
+		var username = document.getElementById("username").value;
+		var password = document.getElementById("password").value;
 
-		if (!pattern.test(password)) {
-			document.getElementById("text-danger").innerHTML += "<h5 style='color: darkred;'>Invalid Password</h5>";
-			$("#password").css({ "border": "2px solid darkred" });
+		function validatePassword() {
+			var pattern = new RegExp("[A-Za-z0-9]{8,20}");
+
+			if (!pattern.test(password)) {
+				document.getElementById("text-danger").innerHTML += "<h5 style='color: darkred;'>Invalid Password</h5>";
+				$("#password").css({ "border": "2px solid darkred" });
+			}
+			else {
+				document.getElementById("text-danger").innerHTML = "";
+			}
+			return false;
 		}
-		else {
-			document.getElementById("text-danger").innerHTML = "";
-		}
-		return false;
-	}
 
 		$.ajax({
 			url: "/Account/Login",
@@ -34,9 +38,9 @@ $("#login").click(function () {
 			}
 		});
 		return false;
-});
+	});
 
-$("#logout").click(function () {
+	$("#logout").click(function () {
 		$.ajax({
 			url: "/Account/Logout",
 			type: 'POST',
@@ -45,8 +49,8 @@ $("#logout").click(function () {
 			}
 		});
 		return false;
+	});
 });
-
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
@@ -72,3 +76,29 @@ $('.star1').hover(function () {
 }, function () {
 	$(this).css('color', 'black').prevAll('.star1').css('color', 'black');
 });
+
+function showStats() {
+	if (!statsExpanded) {
+		$('.user-stats-wrapper').show(200);
+	}
+	else {
+		$('.user-stats-wrapper').hide(200);
+	}
+
+	statsExpanded = !statsExpanded;
+}
+
+function expandRatedProducts() {
+	if (!ratedProductsExpanded) {
+		$('.user-stats-ratedProducts-container').slideDown(300);
+	}
+	else {
+		$('.user-stats-ratedProducts-container').slideUp(300);
+	}
+
+	ratedProductsExpanded = !ratedProductsExpanded;
+}
+
+function openProduct(id) {
+	location.href = '/product/details/' + id;
+}

@@ -22,5 +22,7 @@ namespace LOS.Bussiness.Services.CommentServices
         Task<List<Comment>> GetAllAsync();
 
 		Task<List<Comment>> GetByProductId(int id);
+
+		Task<int> GetCommentsCountForUserAsync(string userId);
     }
 }

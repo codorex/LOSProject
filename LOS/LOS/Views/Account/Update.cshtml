@@ -3,11 +3,45 @@
 @{
 	ViewBag.Title = "Manage Account";
 	Layout = "~/Views/Shared/_Layout.cshtml";
+	int ratedProductsCount = Model.RatedProducts.Count;
 }
 
 <link href="~/Stylesheet/accountServicesStyle.css" rel="stylesheet" />
 <link href="~/Stylesheet/style.css" rel="stylesheet" />
 <body>
+	<div class="user-stats-button">
+		<div class="btn stats-btn" onclick="showStats()">Stats <span class=" glyphicon glyphicon-stats"></span></div>
+		<div class="user-stats-wrapper">
+			<div class="user-stats-container">
+				<div class="user-stats-header">
+					<h3 class="text-center">Profile stats: </h3>
+				</div>
+				<div>
+					<ul class="list-group">
+						<li class="list-group-item">
+							<strong>Products reviewed: </strong>@Model.ProductReviews
+						</li>
+						<li class="list-group-item ratedProducts-button"  onclick="expandRatedProducts()">
+							<strong>Products rated: </strong>@ratedProductsCount
+							<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+							<div class="user-stats-ratedProducts-container">
+								<div>
+									<ul class="list-group">
+										@foreach (var product in Model.RatedProducts)
+										{
+											<li class="list-group-item ratedProduct" onclick="openProduct('@product.ProductID')">
+												@product.Name <span class="glyphicon glyphicon-export pull-right"></span>
+											</li>
+										}
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 	<center>
 		<div style="margin-top: 60px;">
 			<div class="container">

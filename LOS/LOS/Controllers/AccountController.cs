@@ -12,6 +12,7 @@ using System.Data.Entity;
 using LOS.Bussiness.Services.CommentServices;
 using LOS.Bussiness.Services.CategoryServices;
 using System;
+using LOS.Bussiness.Services.ProductServices;
 
 namespace LOS.Controllers
 {
@@ -21,12 +22,14 @@ namespace LOS.Controllers
 		private readonly UserManager<ApplicationUser> userManager;
 		private readonly ICommentService commentService;
 		private readonly ICategoryService categoryService;
+		private readonly IProductService productService;
 
-		public AccountController(UserManager<ApplicationUser> userManager, ICommentService commentService, ICategoryService categoryService)
+		public AccountController(UserManager<ApplicationUser> userManager, ICommentService commentService, ICategoryService categoryService, IProductService productService)
 		{
 			this.commentService = commentService;
 			this.userManager = userManager;
 			this.categoryService = categoryService;
+			this.productService = productService;
 		}
 
 		public ActionResult Index()
@@ -108,6 +111,8 @@ namespace LOS.Controllers
 		[AllowAnonymous]
 		public async Task<ActionResult> Update(UpdateUserModel model)
 		{
+			List<Product> ratedProducts = await productService.GetRatedProductsForUserAsync(User.Identity.GetUserId());
+
 			if (!User.Identity.IsAuthenticated)
 			{
 				return RedirectToAction("Index", "Home", null);
@@ -117,13 +122,14 @@ namespace LOS.Controllers
 				string userId = Request.GetOwinContext().Authentication.User.Identity.GetUserId();
 				ApplicationUser user = await userManager.Users.SingleOrDefaultAsync(x => x.Id == userId);
 
-				int roductReviews = (await commentService.GetAllAsync()).Where(x => x.UserID == User.Identity.GetUserId()).ToList().Count;
+				int productReviews = await commentService.GetCommentsCountForUserAsync(User.Identity.GetUserId());
 
 				model.Username = user.UserName;
 				model.Email = user.Email;
 				model.FirstName = user.FirstName;
 				model.LastName = user.LastName;
-				model.ProductReviews = roductReviews;
+				model.ProductReviews = productReviews;
+				model.RatedProducts = ratedProducts;
 
 				return View(model);
 			}

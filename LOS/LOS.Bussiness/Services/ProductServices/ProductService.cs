@@ -178,5 +178,11 @@ namespace LOS.Bussiness.Services.ProductServices
 		{
 			return await context.Images.AnyAsync(i => i.Name == image.Name);
 		}
+
+		public async Task<List<Product>> GetRatedProductsForUserAsync(string userId)
+		{
+			List<Product> ratedProducts = await context.Products.Where(p => context.RatingLogs.Where(r => r.ProductID == p.ProductID && r.UserID == userId).Any(c => true)).ToListAsync();
+			return ratedProducts;
+		}
 	}
 }
