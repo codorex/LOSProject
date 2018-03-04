@@ -64,7 +64,6 @@ namespace LOS.Controllers
 			}
 
 			throw new ArgumentException("Login Failed! Invalid Credentials.");
-			return Json(new { message = "Login Failed! Invalid Credentials." });
 		}
 
 		[HttpPost]
