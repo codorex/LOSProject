@@ -130,7 +130,7 @@ button {
 	cursor: default;
 }
 
-.ratedProducts-button{
+.ratedProducts-button, .reviewedProducts-button{
 	cursor: pointer !important;
 }
 
