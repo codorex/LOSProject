@@ -241,7 +241,7 @@ namespace LOS.Controllers
 		[HttpPost]
 		public async Task<ActionResult> UploadImages (HttpPostedFileBase file, int productId)
 		{
-			if (file != null)
+			if (file.ContentType != null && SUPPORTED_IMAGE_TYPES.Contains( file.ContentType.Substring(file.FileName.IndexOf('.')) ))
 			{
 				byte[] buffer = new byte[file.ContentLength];
 				await file.InputStream.ReadAsync(buffer, 0, file.ContentLength);
@@ -255,5 +255,12 @@ namespace LOS.Controllers
 
 			return RedirectToAction("Details", "Product", new { id = productId } );
 		}
+
+		private readonly string[] SUPPORTED_IMAGE_TYPES = new string[] 
+		{
+			"jpg",
+			"png",
+			"gif"
+		};
 	}
 }

@@ -53,8 +53,6 @@ namespace LOS.Controllers
 
 			if (user != null && userManager.CheckPassword(user, password))
 			{
-				user.Role = userManager.GetRoles(user.Id).FirstOrDefault() ?? "Regular";
-
 				ClaimsIdentity userIdentity = await userManager.CreateIdentityAsync(user, Startup.AuthenticationType);
 				userIdentity.AddClaim(new Claim("FirstName", user.FirstName));
 				userIdentity.AddClaim(new Claim("FullName", user.FirstName + " " + user.LastName));
