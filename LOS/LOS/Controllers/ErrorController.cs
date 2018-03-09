@@ -21,12 +21,6 @@ namespace LOS.Controllers
 			this.categoryService = categoryService;
 		}
 
-        // GET: Error
-   //     public ActionResult Index()
-   //     {
-			//return InternalServerError();
-   //     }
-
 		public ActionResult NotFound()
 		{
 			Response.TrySkipIisCustomErrors = true;
