@@ -1,9 +1,7 @@
-﻿using LOS.Bussiness.Entities;
-using System;
+﻿using LOS.Domain.Models.Entities;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LOS.Bussiness.Services.CommentServices
@@ -12,7 +10,7 @@ namespace LOS.Bussiness.Services.CommentServices
     {
         private readonly ApplicationContext context;
 
-        public CommentService (ApplicationContext context)
+        public CommentService(ApplicationContext context)
         {
             this.context = context;
         }
@@ -45,25 +43,25 @@ namespace LOS.Bussiness.Services.CommentServices
             return comment;
         }
 
-		public async Task<List<Comment>> GetByProductId(int id)
-		{
-			return await context.Comments.Where(c => c.ProductID == id).OrderByDescending(c => c.CommentID).ToListAsync();
-		}
+        public async Task<List<Comment>> GetByProductId(int id)
+        {
+            return await context.Comments.Where(c => c.ProductID == id).OrderByDescending(c => c.CommentID).ToListAsync();
+        }
 
-		public async Task<List<Product>> GetReviewedProductsForUserAsync(string userId)
-		{
-			List<Product> result = await context.Products.Where(p => context.Comments.Where(c => c.UserID == userId && c.ProductID == p.ProductID).Any()).ToListAsync();
-			return result;
-		}
+        public async Task<List<Product>> GetReviewedProductsForUserAsync(string userId)
+        {
+            List<Product> result = await context.Products.Where(p => context.Comments.Where(c => c.UserID == userId && c.ProductID == p.ProductID).Any()).ToListAsync();
+            return result;
+        }
 
-		public async Task<int> GetCommentsCountForUserAsync(string userId)
-		{
-			int result = await context.Comments.Where(c => c.UserID == userId).CountAsync();
+        public async Task<int> GetCommentsCountForUserAsync(string userId)
+        {
+            int result = await context.Comments.Where(c => c.UserID == userId).CountAsync();
 
-			return result;
-		}
+            return result;
+        }
 
-		public async Task<List<Comment>> GetListAsync(int pageNumber, int pageSize)
+        public async Task<List<Comment>> GetListAsync(int pageNumber, int pageSize)
         {
             List<Comment> comments = await context.Comments.OrderBy(c => c.CommentID).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 

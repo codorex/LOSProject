@@ -1,24 +1,27 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.Domain.Models.Entities.IdentityModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace LOS.Models
+namespace LOS.Domain.Models.Entities
 {
-    public class DetailsModel
+    public class Product
     {
+        [Key]
         public int ProductID { get; set; }
         public string Name { get; set; }
         public int CategoryID { get; set; }
-        public Category Category { get; set; }
         public DateTime DateReleased { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }
         public decimal Rating { get; set; }
-        public List<Image> Images { get; set; }
-        public int CommentsCount { get; set; }
-        public int RatingVoteCount { get; set; }
-        public bool UserHasVoted { get; set; }
         public int Quantity { get; set; }
-        public int CartItemCount { get; set; }
+        public List<Image> Images { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }
+
+        public Product()
+        {
+            this.Users = new HashSet<ApplicationUser>();
+        }
     }
 }
