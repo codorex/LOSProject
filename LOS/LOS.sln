@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS", "LOS\LOS.csproj", "{6948AE67-1AC7-45DF-A720-3B0E545808A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Bussiness", "LOS.Bussiness\LOS.Bussiness.csproj", "{3B34909E-DA89-4470-9758-FB231028CE90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Domain.Models", "LOS.Domain.Models\LOS.Domain.Models.csproj", "{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,20 +23,15 @@ Global
 		{3B34909E-DA89-4470-9758-FB231028CE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B34909E-DA89-4470-9758-FB231028CE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B34909E-DA89-4470-9758-FB231028CE90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://mmomchilov.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = LOS\\LOS.csproj
-		SccProjectName1 = LOS
-		SccLocalPath1 = LOS
-		SccProjectUniqueName2 = LOS.Bussiness\\LOS.Bussiness.csproj
-		SccProjectName2 = LOS.Bussiness
-		SccLocalPath2 = LOS.Bussiness
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FAB4AFE-582E-4E2C-A082-4368F4AC3816}
 	EndGlobalSection
 EndGlobal

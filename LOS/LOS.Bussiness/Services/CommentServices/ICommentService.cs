@@ -1,8 +1,5 @@
-﻿using LOS.Bussiness.Entities;
-using System;
+﻿using LOS.Domain.Models.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LOS.Bussiness.Services.CommentServices
@@ -21,10 +18,10 @@ namespace LOS.Bussiness.Services.CommentServices
 
         Task<List<Comment>> GetAllAsync();
 
-		Task<List<Comment>> GetByProductId(int id);
+        Task<List<Comment>> GetByProductId(int id);
 
-		Task<int> GetCommentsCountForUserAsync(string userId);
+        Task<int> GetCommentsCountForUserAsync(string userId);
 
-		Task<List<Product>> GetReviewedProductsForUserAsync(string userId);
-	}
+        Task<List<Product>> GetReviewedProductsForUserAsync(string userId);
+    }
 }

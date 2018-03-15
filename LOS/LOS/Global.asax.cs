@@ -1,11 +1,5 @@
-﻿using LOS.Bussiness.Entities;
-using LOS.Bussiness;
-using SimpleInjector;
-using SimpleInjector.Integration.Web;
-using SimpleInjector.Integration.Web.Mvc;
+﻿using SimpleInjector.Integration.Web.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -25,21 +19,21 @@ namespace LOS
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(SimpleInjectorConfig.Setup()));
         }
 
-		protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
 
-		{
-			string authCookie = FormsAuthentication.FormsCookieName;
-			string path = HttpContext.Current.Request.Path;
+        {
+            string authCookie = FormsAuthentication.FormsCookieName;
+            string path = HttpContext.Current.Request.Path;
 
-			if (authCookie == null)
-			{
-				if (path.Contains("ChangePassword"))
-				{
-					Response.Redirect("Index/Home");
-					Response.End();
-					return;
-				}
-			}
-		}
+            if (authCookie == null)
+            {
+                if (path.Contains("ChangePassword"))
+                {
+                    Response.Redirect("Index/Home");
+                    Response.End();
+                    return;
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using LOS.Bussiness.Entities;
+﻿using LOS.Domain.Models.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

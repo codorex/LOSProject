@@ -1,6 +1,4 @@
-﻿using LOS.Bussiness.Entities;
-using LOS.Bussiness.Entities.IdentityModels;
-using LOS.Models;
+﻿using LOS.Models;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,221 +11,224 @@ using LOS.Bussiness.Services.CommentServices;
 using LOS.Bussiness.Services.CategoryServices;
 using System;
 using LOS.Bussiness.Services.ProductServices;
+using LOS.Domain.Models.Entities.IdentityModels;
+using LOS.Domain.Models.Entities;
 
 namespace LOS.Controllers
 {
-	public class AccountController : Controller
-	{
-		private readonly log4net.ILog log = log4net.LogManager.GetLogger("AccountController.cs");
-		private readonly UserManager<ApplicationUser> userManager;
-		private readonly ICommentService commentService;
-		private readonly ICategoryService categoryService;
-		private readonly IProductService productService;
+    public class AccountController : Controller
+    {
+        private readonly log4net.ILog log = log4net.LogManager.GetLogger("AccountController.cs");
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly ICommentService commentService;
+        private readonly ICategoryService categoryService;
+        private readonly IProductService productService;
 
-		public AccountController(UserManager<ApplicationUser> userManager, ICommentService commentService, ICategoryService categoryService, IProductService productService)
-		{
-			this.commentService = commentService;
-			this.userManager = userManager;
-			this.categoryService = categoryService;
-			this.productService = productService;
-		}
+        public AccountController(UserManager<ApplicationUser> userManager, ICommentService commentService, ICategoryService categoryService, IProductService productService)
+        {
+            this.commentService = commentService;
+            this.userManager = userManager;
+            this.categoryService = categoryService;
+            this.productService = productService;
+        }
 
-		public ActionResult Index()
-		{
-			return View();
-		}
-		
-		[HttpGet]
-		[AllowAnonymous]
-		public ActionResult Login(string username = "", string password = "")
-		{
-			return RedirectToAction("Index", "Home", null);
-		}
+        public ActionResult Index()
+        {
+            return View();
+        }
 
-		[HttpPost]
-		[AllowAnonymous]
-		[ActionName("Login")]
-		public async Task<JsonResult> LoginPost(string username, string password)
-		{
-			ApplicationUser user = userManager.Users.SingleOrDefault(x => x.UserName == username);
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Login(string username = "", string password = "")
+        {
+            return RedirectToAction("Index", "Home", null);
+        }
 
-			if (user != null && userManager.CheckPassword(user, password))
-			{
-				ClaimsIdentity userIdentity = await userManager.CreateIdentityAsync(user, Startup.AuthenticationType);
-				userIdentity.AddClaim(new Claim("FirstName", user.FirstName));
-				userIdentity.AddClaim(new Claim("FullName", user.FirstName + " " + user.LastName));
-				userIdentity.AddClaim(new Claim("Role", user.Role));
-				
-				Request.GetOwinContext().Authentication.SignIn(userIdentity);
+        [HttpPost]
+        [AllowAnonymous]
+        [ActionName("Login")]
+        public async Task<JsonResult> LoginPost(string username, string password)
+        {
+            ApplicationUser user = userManager.Users.SingleOrDefault(x => x.UserName == username);
 
-				return Json(new { message = 202 });
-			}
+            if (user != null && userManager.CheckPassword(user, password))
+            {
+                ClaimsIdentity userIdentity = await userManager.CreateIdentityAsync(user, Startup.AuthenticationType);
+                userIdentity.AddClaim(new Claim("FirstName", user.FirstName));
+                userIdentity.AddClaim(new Claim("FullName", user.FirstName + " " + user.LastName));
+                userIdentity.AddClaim(new Claim("Role", user.Role));
 
-			throw new ArgumentException("Login Failed! Invalid Credentials.");
-		}
+                Request.GetOwinContext().Authentication.SignIn(userIdentity);
 
-		[HttpPost]
-		public ActionResult Logout()
-		{
-			Request.GetOwinContext().Authentication.SignOut(Startup.AuthenticationType);
+                return Json(new { message = 202 });
+            }
 
-			return RedirectToAction("Index", "Home", null);
-		}
+            throw new ArgumentException("Login Failed! Invalid Credentials.");
+        }
 
-		[HttpGet]
-		[AllowAnonymous]
-		public ActionResult Register(string returnUrl)
-		{
-			return View(new RegisterModel { ReturnUrl = returnUrl });
-		}
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            Request.GetOwinContext().Authentication.SignOut(Startup.AuthenticationType);
 
-		[HttpPost]
-		[AllowAnonymous]
-		public async Task<ActionResult> Register(RegisterModel model)
-		{
-			var user = new ApplicationUser()
-			{
-				UserName = model.Username,
-				FirstName = model.FirstName,
-				LastName = model.LastName,
-				Email = model.Email,
-				Role = "Regular"
-			};
+            return RedirectToAction("Index", "Home", null);
+        }
 
-			if (await userManager.Users.AnyAsync(x => x.Email == user.Email))
-			{
-				ModelState.AddModelError("emailUsed", $"User with e-mail: {model.Email} already exists!");
-				return View(model);
-			}
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Register(string returnUrl)
+        {
+            return View(new RegisterModel { ReturnUrl = returnUrl });
+        }
 
-			if (await userManager.Users.AnyAsync(x => x.UserName == user.UserName))
-			{
-				ModelState.AddModelError("usernameTaken", $"Username \"{model.Username}\" is taken.");
-				return View(model);
-			}
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> Register(RegisterModel model)
+        {
+            var user = new ApplicationUser()
+            {
+                UserName = model.Username,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                Role = "Regular"
+            };
 
-			IdentityResult rdyCheck = await userManager.CreateAsync(user, model.Password);
+            if (await userManager.Users.AnyAsync(x => x.Email == user.Email))
+            {
+                ModelState.AddModelError("emailUsed", $"User with e-mail: {model.Email} already exists!");
+                return View(model);
+            }
 
-			if (rdyCheck.Succeeded)
-			{
-				await userManager.AddToRoleAsync(user.Id, "Regular");
-				log.Info("Registered user: " + user.UserName + "\n Role: " + user.Role);
-			}
+            if (await userManager.Users.AnyAsync(x => x.UserName == user.UserName))
+            {
+                ModelState.AddModelError("usernameTaken", $"Username \"{model.Username}\" is taken.");
+                return View(model);
+            }
 
-			await LoginPost(user.UserName, model.Password);
+            IdentityResult rdyCheck = await userManager.CreateAsync(user, model.Password);
 
-			return Redirect(model.ReturnUrl);
-		}
+            if (rdyCheck.Succeeded)
+            {
+                await userManager.AddToRoleAsync(user.Id, "Regular");
+                log.Info("Registered user: " + user.UserName + "\n Role: " + user.Role);
+            }
 
-		[HttpGet]
-		[AllowAnonymous]
-		public async Task<ActionResult> Update(UpdateUserModel model)
-		{
-			List<Product> ratedProducts = await productService.GetRatedProductsForUserAsync(User.Identity.GetUserId());
-			List<Product> reviewedProducts = await commentService.GetReviewedProductsForUserAsync(User.Identity.GetUserId());
+            await LoginPost(user.UserName, model.Password);
 
-			if (!User.Identity.IsAuthenticated)
-			{
-				return RedirectToAction("Index", "Home", null);
-			}
-			else
-			{
-				string userId = Request.GetOwinContext().Authentication.User.Identity.GetUserId();
-				ApplicationUser user = await userManager.Users.SingleOrDefaultAsync(x => x.Id == userId);
+            return Redirect(model.ReturnUrl);
+        }
 
-				int productReviews = await commentService.GetCommentsCountForUserAsync(User.Identity.GetUserId());
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult> Update(UpdateUserModel model)
+        {
+            List<Product> ratedProducts = await productService.GetRatedProductsForUserAsync(User.Identity.GetUserId());
+            List<Product> reviewedProducts = await commentService.GetReviewedProductsForUserAsync(User.Identity.GetUserId());
 
-				model.Username = user.UserName;
-				model.Email = user.Email;
-				model.FirstName = user.FirstName;
-				model.LastName = user.LastName;
-				model.ProductReviews = productReviews;
-				model.RatedProducts = ratedProducts;
-				model.ReviewedProducts = reviewedProducts;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home", null);
+            }
+            else
+            {
+                string userId = Request.GetOwinContext().Authentication.User.Identity.GetUserId();
+                ApplicationUser user = await userManager.Users.SingleOrDefaultAsync(x => x.Id == userId);
 
-				return View(model);
-			}
-		}
+                int productReviews = await commentService.GetCommentsCountForUserAsync(User.Identity.GetUserId());
 
-		[HttpPost, ActionName("Update")]
-		[Authorize(Roles = "Admin, Regular, Moderator")]
-		public async Task<ActionResult> UpdatePost(UpdateUserModel model)
-		{
-			string userId = Request.GetOwinContext().Authentication.User.Identity.GetUserId();
+                model.Username = user.UserName;
+                model.Email = user.Email;
+                model.FirstName = user.FirstName;
+                model.LastName = user.LastName;
+                model.ProductReviews = productReviews;
+                model.RatedProducts = ratedProducts;
+                model.ReviewedProducts = reviewedProducts;
 
-			ApplicationUser user = userManager.FindById(userId);
-			user.UserName = model.Username;
-			user.FirstName = model.FirstName;
-			user.LastName = model.LastName;
-			user.Email = model.Email;
+                return View(model);
+            }
+        }
 
-			try
-			{
-				await userManager.UpdateAsync(user);
-			}
-			catch (Exception e)
-			{
-				log.Error("ERROR UPDATING ACCOUNT " + e.InnerException + e.Message);
-			}
+        [HttpPost, ActionName("Update")]
+        [Authorize(Roles = "Admin, Regular, Moderator")]
+        public async Task<ActionResult> UpdatePost(UpdateUserModel model)
+        {
+            string userId = Request.GetOwinContext().Authentication.User.Identity.GetUserId();
 
-			return RedirectToAction("Index", "Home", null);
-		}
+            ApplicationUser user = userManager.FindById(userId);
+            user.UserName = model.Username;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Email = model.Email;
 
-		[AllowAnonymous]
-		public PartialViewResult _Navbar()
-		{
-			List<Category> categories = Task.Run(async () =>
-			{
-				categories = await categoryService.GetAllAsync(); return categories;
-			}).Result;
+            try
+            {
+                await userManager.UpdateAsync(user);
+            }
+            catch (Exception e)
+            {
+                log.Error("ERROR UPDATING ACCOUNT " + e.InnerException + e.Message);
+            }
 
-			NavbarModel model = new NavbarModel
-			{
-				Categories = categories
-			};
+            return RedirectToAction("Index", "Home", null);
+        }
 
-			return PartialView("_Navbar", model);
-		}
+        [AllowAnonymous]
+        public PartialViewResult _Navbar()
+        {
+            List<Category> categories = Task.Run(async () =>
+            {
+                categories = await categoryService.GetAllAsync();
+                return categories;
+            }).Result;
 
-		[HttpPost]
-		[Authorize(Roles = "Admin, Regular, Moderator")]
-		private async Task<bool> CheckPassword(string password)
-		{
-			string userId = User.Identity.GetUserId();
-			ApplicationUser user = await userManager.Users.SingleOrDefaultAsync(u => u.Id == userId);
-			return await userManager.CheckPasswordAsync(user, password);
-		}
+            NavbarModel model = new NavbarModel
+            {
+                Categories = categories
+            };
 
-		[HttpGet]
-		[AllowAnonymous]
-		public ActionResult ChangePassword()
-		{
-			if (!User.Identity.IsAuthenticated)
-			{
-				return RedirectToAction("Index", "Home", null);
-			}
-			else
-			{
-				return View();
-			}
-		}
+            return PartialView("_Navbar", model);
+        }
 
-		[Authorize(Roles = "Admin, Regular, Moderator")]
-		[HttpPost, ActionName("ChangePassword")]
-		public async Task<ActionResult> ChangePasswordPost(ChangePasswordModel model)
-		{
-			bool checkPass = await CheckPassword(model.OldPassword);
+        [HttpPost]
+        [Authorize(Roles = "Admin, Regular, Moderator")]
+        private async Task<bool> CheckPassword(string password)
+        {
+            string userId = User.Identity.GetUserId();
+            ApplicationUser user = await userManager.Users.SingleOrDefaultAsync(u => u.Id == userId);
+            return await userManager.CheckPasswordAsync(user, password);
+        }
 
-			if (checkPass)
-			{
-				await userManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-				return RedirectToAction("Index", "Home");
-			}
-			else
-			{
-				ModelState.AddModelError("passwordChangeError", "Error. Password has not been changed!");
-				return View("ChangePassword");
-			}
-		}
-	}
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ChangePassword()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home", null);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [Authorize(Roles = "Admin, Regular, Moderator")]
+        [HttpPost, ActionName("ChangePassword")]
+        public async Task<ActionResult> ChangePasswordPost(ChangePasswordModel model)
+        {
+            bool checkPass = await CheckPassword(model.OldPassword);
+
+            if (checkPass)
+            {
+                await userManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("passwordChangeError", "Error. Password has not been changed!");
+                return View("ChangePassword");
+            }
+        }
+    }
 }
