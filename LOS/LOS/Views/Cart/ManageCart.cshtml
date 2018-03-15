@@ -1,61 +1,61 @@
-﻿@model List<LOS.Bussiness.Entities.Product>
-@using LOS.Bussiness.Entities.IdentityModels;
+﻿@model List<LOS.Domain.Models.Entities.Product>
+@using LOS.Domain.Models.Entities.IdentityModels;
 @{
-	ViewBag.Title = "Cart";
-	ViewBag.CartItemCount = Model.Count;
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	decimal totalCost = 0;
-	int itemCount = Model.Count;
+    ViewBag.Title = "Cart";
+    ViewBag.CartItemCount = Model.Count;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal totalCost = 0;
+    int itemCount = Model.Count;
 }
 <link href="~/Stylesheet/accountServicesStyle.css" rel="stylesheet" />
 <link href="~/Stylesheet/style.css" rel="stylesheet" />
 <link href="~/Stylesheet/manageCart.css" rel="stylesheet" />
 
 <div id="panel-container">
-	<div class="panel panel-primary" id="panel-primary">
-		<div class="panel-heading" id="panel-heading">
-			<span class="glyphicon glyphicon-shopping-cart"></span>@User.FirstName()'s Cart
-			<div class="pull-right action-buttons">
-				<div class="btn-group pull-right">
-					<button onclick="clearCart();" id="clearCartBtn" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove-circle"></span>Clear</button>
-				</div>
-			</div>
-		</div>
-		<div class="panel-body">
-			<ul class="list-group">
-				@foreach (var product in Model)
-				{
-					totalCost += product.Price;
-					<li class="list-group-item">
-						<div class="checkbox">
-							<label for="checkbox">
-								@Html.ActionLink(product.Name, "Details", "Product", new { id = product.ProductID }, null)
-							</label>
-						</div>
-						<div class="pull-right action-buttons" style="padding-left: 10px;">
-							<button onclick="removeFromCart(this);" data-productId="@product.ProductID" data-price="@product.Price" data-cartItemsCount="@Model.Count" class="btn btn-danger" style="padding: 2px; padding-left: 5px;"><span class="glyphicon glyphicon-trash"></span></button>
-						</div>
-						<div class="pull-right">
-							<label for="checkbox">
-								<small id="price">@product.Price</small><small> $</small>
-							</label>
-						</div>
-					</li>
-				}
-			</ul>
-		</div>
-		<div class="panel-footer" id="panel-footer">
-			<div class="row" id="panel-row">
-				<div class="col-md-6" style="pointer-events: none;">
-					<h4 style="cursor: default;">
-						Total cost: <span class="label label-danger"><small style="color: white; font-size: 15px;" id="totalCost">@totalCost</small> $</span>
-					</h4>
-				</div>
-				<div class="pull-right" style="float: right; padding-right: 10px;">
-					<button class="btn btn-danger">Chechout <span class="glyphicon glyphicon-arrow-right" style="padding-left: 5px;"></span></button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="panel panel-primary" id="panel-primary">
+        <div class="panel-heading" id="panel-heading">
+            <span class="glyphicon glyphicon-shopping-cart"></span>@User.FirstName()'s Cart
+            <div class="pull-right action-buttons">
+                <div class="btn-group pull-right">
+                    <button onclick="clearCart();" id="clearCartBtn" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove-circle"></span>Clear</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                @foreach (var product in Model)
+                {
+                    totalCost += product.Price;
+                    <li class="list-group-item">
+                        <div class="checkbox">
+                            <label for="checkbox">
+                                @Html.ActionLink(product.Name, "Details", "Product", new { id = product.ProductID }, null)
+                            </label>
+                        </div>
+                        <div class="pull-right action-buttons" style="padding-left: 10px;">
+                            <button onclick="removeFromCart(this);" data-productId="@product.ProductID" data-price="@product.Price" data-cartItemsCount="@Model.Count" class="btn btn-danger" style="padding: 2px; padding-left: 5px;"><span class="glyphicon glyphicon-trash"></span></button>
+                        </div>
+                        <div class="pull-right">
+                            <label for="checkbox">
+                                <small id="price">@product.Price</small><small> $</small>
+                            </label>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="panel-footer" id="panel-footer">
+            <div class="row" id="panel-row">
+                <div class="col-md-6" style="pointer-events: none;">
+                    <h4 style="cursor: default;">
+                        Total cost: <span class="label label-danger"><small style="color: white; font-size: 15px;" id="totalCost">@totalCost</small> $</span>
+                    </h4>
+                </div>
+                <div class="pull-right" style="float: right; padding-right: 10px;">
+                    <button class="btn btn-danger">Chechout <span class="glyphicon glyphicon-arrow-right" style="padding-left: 5px;"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="~/Scripts/cart.js"></script>

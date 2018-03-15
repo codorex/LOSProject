@@ -1,161 +1,161 @@
 ﻿@model LOS.Models.DetailsModel
-@using LOS.Bussiness.Entities.IdentityModels
+@using LOS.Domain.Models.Entities.IdentityModels
 @{
 
-	ViewBag.Title = $"{Model.Category.Name} - " + Model.Name;
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	int cartItems = Model.CartItemCount;
-	int imageCount = 0;
+    ViewBag.Title = $"{Model.Category.Name} - " + Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int cartItems = Model.CartItemCount;
+    int imageCount = 0;
 }
 
 <link rel="stylesheet" href="~/Stylesheet/details.css" />
 
-	<div class="container">
-		<div class="card" id="details-content">
-			<div class="container-fluid">
-				<div class="wrapper row" style="min-height: 40em;">
-					<div class="preview col-md-6" id="images-container">
-						<div class="preview-pic tab-content" id="image-preview-large">
-							@foreach (var image in Model.Images)
-							{
-								imageCount++;
-								if (imageCount == 1)
-								{
-									<div align="right" class="tab-pane active" id="pic-@imageCount">
-										@if (image.FileID != null)
-										{
-											<img id="images-preview" src="~/ImageHandler.ashx?id=@image.FileID.Value"/>
-										}
-									</div>
-								}
-								else
-								{
-									<div class="tab-pane" id="pic-@imageCount">
-										@if (image.FileID != null)
-										{
-											<img id="images-preview" src="~/ImageHandler.ashx?id=@image.FileID.Value"/>
-										}
-									</div>
-								}
-							}
-							<ul class="preview-thumbnail nav nav-tabs">
-								@{imageCount = 0; }
-								@foreach (var image in Model.Images)
-								{
-									imageCount++;
-									if (imageCount == 1)
-									{
-										if (image.FileID != null)
-										{
-											<li class="active"><a data-target="#pic-@imageCount" data-toggle="tab"><img id="image-thumbnail" src="~/ImageHandler.ashx?id=@image.FileID.Value" /></a></li>
-										}
-									}
-									else
-									{
-										if (image.FileID != null)
-										{
-											<li><a data-target="#pic-@imageCount" data-toggle="tab"><img id="image-thumbnail" src="~/ImageHandler.ashx?id=@image.FileID.Value" /></a></li>
-										}
-									}
-								}
-							</ul>
-						</div>
+<div class="container">
+    <div class="card" id="details-content">
+        <div class="container-fluid">
+            <div class="wrapper row" style="min-height: 40em;">
+                <div class="preview col-md-6" id="images-container">
+                    <div class="preview-pic tab-content" id="image-preview-large">
+                        @foreach (var image in Model.Images)
+                        {
+                            imageCount++;
+                            if (imageCount == 1)
+                            {
+                                <div align="right" class="tab-pane active" id="pic-@imageCount">
+                                    @if (image.FileID != null)
+                                    {
+                                        <img id="images-preview" src="~/ImageHandler.ashx?id=@image.FileID.Value" />
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="tab-pane" id="pic-@imageCount">
+                                    @if (image.FileID != null)
+                                    {
+                                        <img id="images-preview" src="~/ImageHandler.ashx?id=@image.FileID.Value" />
+                                    }
+                                </div>
+                            }
+                        }
+                        <ul class="preview-thumbnail nav nav-tabs">
+                            @{imageCount = 0; }
+                            @foreach (var image in Model.Images)
+                            {
+                                imageCount++;
+                                if (imageCount == 1)
+                                {
+                                    if (image.FileID != null)
+                                    {
+                                        <li class="active"><a data-target="#pic-@imageCount" data-toggle="tab"><img id="image-thumbnail" src="~/ImageHandler.ashx?id=@image.FileID.Value" /></a></li>
+                                    }
+                                }
+                                else
+                                {
+                                    if (image.FileID != null)
+                                    {
+                                        <li><a data-target="#pic-@imageCount" data-toggle="tab"><img id="image-thumbnail" src="~/ImageHandler.ashx?id=@image.FileID.Value" /></a></li>
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
 
-							@{
-								if (User.Role() == "Admin")
-								{
-									using (Html.BeginForm("UploadImages", "Product", new { productId = Model.ProductID }, FormMethod.Post,
-										new { enctype = "multipart/form-data" }))
-									{
-										<label for="file">Upload Image:</label>
-										<input type="file" name="file" id="file" class="btn btn-default" style="width: 100%;" />
-										<input type="submit" value="Upload" class="btn btn-info" style="margin: 10px;" />
-									}
-								}
-							}
+                    @{
+                        if (User.Role() == "Admin")
+                        {
+                            using (Html.BeginForm("UploadImages", "Product", new { productId = Model.ProductID }, FormMethod.Post,
+                                new { enctype = "multipart/form-data" }))
+                            {
+                                <label for="file">Upload Image:</label>
+                                <input type="file" name="file" id="file" class="btn btn-default" style="width: 100%;" />
+                                <input type="submit" value="Upload" class="btn btn-info" style="margin: 10px;" />
+                            }
+                        }
+                    }
 
-					</div>
-					<div class="details col-md-5">
-						<h4 class="product-title" id="product-category-title">@Model.Category.Name</h4>
-						<h3 class="product-title" id="product-category-title">@Model.Name</h3>
-						<div class="rating">
-							<ul class="ratingSection">
-								<li><h3 id="commentCount"><strong>@Model.CommentsCount</strong></h3></li>
-								<li><h4>reviews</h4></li>
-							</ul>
-						</div>
-						<div style="cursor: default;">
-							<p class="product-description">
-								@Model.Description
-							</p>
-						</div>
-						<h4 class="price" style="color: white;">Price: <span style="color: #8bfe74;">$@Model.Price</span></h4>
-						<ul class="ratingSection">
-							<li><h5 id="votes">@Model.RatingVoteCount votes</h5></li>
-							<li style="padding-left: 10px; cursor: default;">
-								@for (int i = 1; i <= 5; i++)
-								{
-									if (i <= Model.Rating)
-									{
-										<button class="glyphicon glyphicon-star" id="rating-star"></button>
-									}
-									else
-									{
-										<button class="glyphicon glyphicon-star star1" id="rating-star"></button>
-									}
-								}
-							</li>
-							<li>(@Model.Rating of 5)</li>
-						</ul>
-						<div id="ratingBox">
-							@if (!User.Identity.IsAuthenticated)
-							{
-								<h4 style="margin-bottom: 30px;">Please, Log In to rate the product.</h4>
-							}
-							else if (!Model.UserHasVoted)
-							{
-								<div style="cursor: pointer;">
-									@{Html.RenderPartial("_RateAuthenticated", Model);}
-								</div>
-										}
-										else
-										{
-											<h4 style="margin-bottom: 30px;">Thank you for your vote!</h4>
-										}
-						</div>
-						<div id="addToCartBox">
-							@if (!User.Identity.IsAuthenticated)
-							{
-								<div class="action">
-									<button class="btn btn-success" data-cartItemCount="@cartItems" data-productId="@Model.ProductID" onclick="addToCart(this);" type="button" id="cart-add-btn">Add to cart</button>
-								</div>
-							}
-							else if (Model.Quantity == 0)
-							{
-								<div class="action">
-									<button class="btn btn-danger" data-cartItemCount="@cartItems" data-productId="@Model.ProductID" onclick="addToCart(this);" type="button" id="cart-add-btn">Out of Stock</button>
-								</div>
-							}
-							else
-							{
-								if (Model.Quantity < 10)
-								{
-									<div class="action">
-										<button class="btn btn-warning" data-cartItemCount="@cartItems" data-quantity=@Model.Quantity data-productId="@Model.ProductID" onclick="addToCart(this);" type="button">Add to Cart</button><small>  (Limited Quantity)</small>
-									</div>
-								}
-								else
-								{
-									<div class="action">
-										<button class="btn btn-info" data-cartItemCount="@cartItems" data-quantity=@Model.Quantity data-productId="@Model.ProductID" onclick="addToCart(this);" type="button">Add to Cart</button>
-									</div>
-								}
-							}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+                <div class="details col-md-5">
+                    <h4 class="product-title" id="product-category-title">@Model.Category.Name</h4>
+                    <h3 class="product-title" id="product-category-title">@Model.Name</h3>
+                    <div class="rating">
+                        <ul class="ratingSection">
+                            <li><h3 id="commentCount"><strong>@Model.CommentsCount</strong></h3></li>
+                            <li><h4>reviews</h4></li>
+                        </ul>
+                    </div>
+                    <div style="cursor: default;">
+                        <p class="product-description">
+                            @Model.Description
+                        </p>
+                    </div>
+                    <h4 class="price" style="color: white;">Price: <span style="color: #8bfe74;">$@Model.Price</span></h4>
+                    <ul class="ratingSection">
+                        <li><h5 id="votes">@Model.RatingVoteCount votes</h5></li>
+                        <li style="padding-left: 10px; cursor: default;">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= Model.Rating)
+                                {
+                                    <button class="glyphicon glyphicon-star" id="rating-star"></button>
+                                }
+                                else
+                                {
+                                    <button class="glyphicon glyphicon-star star1" id="rating-star"></button>
+                                }
+                            }
+                        </li>
+                        <li>(@Model.Rating of 5)</li>
+                    </ul>
+                    <div id="ratingBox">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <h4 style="margin-bottom: 30px;">Please, Log In to rate the product.</h4>
+                        }
+                        else if (!Model.UserHasVoted)
+                        {
+                            <div style="cursor: pointer;">
+                                @{Html.RenderPartial("_RateAuthenticated", Model);}
+                            </div>
+                        }
+                        else
+                        {
+                            <h4 style="margin-bottom: 30px;">Thank you for your vote!</h4>
+                        }
+                    </div>
+                    <div id="addToCartBox">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <div class="action">
+                                <button class="btn btn-success" data-cartItemCount="@cartItems" data-productId="@Model.ProductID" onclick="addToCart(this);" type="button" id="cart-add-btn">Add to cart</button>
+                            </div>
+                        }
+                        else if (Model.Quantity == 0)
+                        {
+                            <div class="action">
+                                <button class="btn btn-danger" data-cartItemCount="@cartItems" data-productId="@Model.ProductID" onclick="addToCart(this);" type="button" id="cart-add-btn">Out of Stock</button>
+                            </div>
+                        }
+                        else
+                        {
+                            if (Model.Quantity < 10)
+                            {
+                                <div class="action">
+                                    <button class="btn btn-warning" data-cartItemCount="@cartItems" data-quantity=@Model.Quantity data-productId="@Model.ProductID" onclick="addToCart(this);" type="button">Add to Cart</button><small>  (Limited Quantity)</small>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="action">
+                                    <button class="btn btn-info" data-cartItemCount="@cartItems" data-quantity=@Model.Quantity data-productId="@Model.ProductID" onclick="addToCart(this);" type="button">Add to Cart</button>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="~/Scripts/details.js"></script>
-	@Html.Action("_Comments", new { productId = Model.ProductID })
+@Html.Action("_Comments", new { productId = Model.ProductID })
