@@ -1,80 +1,80 @@
 ﻿@model LOS.Models.CommentsModel
-@using LOS.Bussiness.Entities.IdentityModels;
+@using LOS.Domain.Models.Entities.IdentityModels;
 @{
-	string userId = Model.CurrentUserId;
-	string userName = User.Identity.Name == "" ? "" : User.Identity.Name;
+    string userId = Model.CurrentUserId;
+    string userName = User.Identity.Name == "" ? "" : User.Identity.Name;
 }
 <link href="~/Stylesheet/comments.css" rel="stylesheet" />
 <div class="container">
-	<div class="col-lg-4 col-sm-6 text-left" style="width: 100%;">
-		<div class="well" id="comments-container">
-			<h4>Reviews:</h4>
-			<div class="input-group">
-				<textarea id="userComment" class="form-control input-sm text-left" placeholder="Write your review here..."></textarea>
-				<br />
-				<span class="input-group-btn">
-					@using (Html.BeginForm("AddComment", "Product", FormMethod.Post))
-					{
-						if (User.Identity.Name != "")
-						{
-							<input type="submit" id="addComment" class="btn btn-primary btn-sm" value="Post" />
-						}
-						else
-						{
-							<input type="submit" id="addComment" style="pointer-events: none; color: lightgray;" class="btn btn-primary btn-sm" value="Login to review" />
-						}
+    <div class="col-lg-4 col-sm-6 text-left" style="width: 100%;">
+        <div class="well" id="comments-container">
+            <h4>Reviews:</h4>
+            <div class="input-group">
+                <textarea id="userComment" class="form-control input-sm text-left" placeholder="Write your review here..."></textarea>
+                <br />
+                <span class="input-group-btn">
+                    @using (Html.BeginForm("AddComment", "Product", FormMethod.Post))
+                    {
+                        if (User.Identity.Name != "")
+                        {
+                            <input type="submit" id="addComment" class="btn btn-primary btn-sm" value="Post" />
+                        }
+                        else
+                        {
+                            <input type="submit" id="addComment" style="pointer-events: none; color: lightgray;" class="btn btn-primary btn-sm" value="Login to review" />
+                        }
 
-					}
-				</span>
-			</div>
-			<input id="data-productId" type="text" value=@Model.productId style="visibility: hidden;" />
-			<input id="data-datePosted" type="text" value=@DateTime.UtcNow style="visibility: hidden;" />
-			<input id="data-userName" type="text" value="@User.Identity.Name" style="visibility: hidden;" />
-			<input id="data-userId" type="text" value="@userId" style="visibility: hidden;" />
-			<br>
-			<ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
-				<div id="addCommentResult">
-				</div>
-				@{
-			if (Model.Comments.Count == 0)
-			{
-						<div id="noComments" align="center">
-							<h3>No reviews for this product so far. Be the first to review!</h3>
-						</div>
-			}
-			else
-			{
-				foreach (var comment in Model.Comments)
-				{
-					ApplicationUser commentUser = Model.Users.FirstOrDefault(u => u.Id == comment.UserID);
+                    }
+                </span>
+            </div>
+            <input id="data-productId" type="text" value=@Model.productId style="visibility: hidden;" />
+            <input id="data-datePosted" type="text" value=@DateTime.UtcNow style="visibility: hidden;" />
+            <input id="data-userName" type="text" value="@User.Identity.Name" style="visibility: hidden;" />
+            <input id="data-userId" type="text" value="@userId" style="visibility: hidden;" />
+            <br>
+            <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+                <div id="addCommentResult">
+                </div>
+                @{
+                    if (Model.Comments.Count == 0)
+                    {
+                        <div id="noComments" align="center">
+                            <h3>No reviews for this product so far. Be the first to review!</h3>
+                        </div>
+                    }
+                    else
+                    {
+                        foreach (var comment in Model.Comments)
+                        {
+                            ApplicationUser commentUser = Model.Users.FirstOrDefault(u => u.Id == comment.UserID);
 
-							<div id="comment-box">
+                            <div id="comment-box">
 
-								@if (Model.CurrentUserId == comment.UserID)
-								{
-									<strong class="pull-left primary-font" style="color: #8bfe74">@commentUser.UserName</strong>
-								}
-								else
-								{
-									<strong class="pull-left primary-font">@commentUser.UserName</strong>
-								}
-								<br>
-								<small class="pull-right text-muted" style="color: white;">
-									<span class="glyphicon glyphicon-time"></span>@comment.DatePosted.ToString(" dd.MM.yyyy")
-								</small>
-								@if (User.Role() == "Moderator" || User.Role() == "Admin" || Model.CurrentUserId == comment.UserID)
-								{
-									<button id="deleteComment" class="pull-right btn btn-info" data-commentId="@comment.CommentID" onclick="deleteComment(this);">Delete</button>
-								}
-								<br />
-								<li class="ui-state-default"><p style="width: 60vw;">@comment.Content</p></li>
-							</div>
-							<br>
-				}
-			}
-				}
-			</ul>
-		</div>
-	</div>
+                                @if (Model.CurrentUserId == comment.UserID)
+                                {
+                                    <strong class="pull-left primary-font" style="color: #8bfe74">@commentUser.UserName</strong>
+                                }
+                                else
+                                {
+                                    <strong class="pull-left primary-font">@commentUser.UserName</strong>
+                                }
+                                <br>
+                                <small class="pull-right text-muted" style="color: white;">
+                                    <span class="glyphicon glyphicon-time"></span>@comment.DatePosted.ToString(" dd.MM.yyyy")
+                                </small>
+                                @if (User.Role() == "Moderator" || User.Role() == "Admin" || Model.CurrentUserId == comment.UserID)
+                                {
+                                    <button id="deleteComment" class="pull-right btn btn-info" data-commentId="@comment.CommentID" onclick="deleteComment(this);">Delete</button>
+                                }
+                                <br />
+                                <li class="ui-state-default"><p style="width: 60vw;">@comment.Content</p></li>
+                            </div>
+                            <br>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
 </div>
 <script src="~/Scripts/comments.js"></script>

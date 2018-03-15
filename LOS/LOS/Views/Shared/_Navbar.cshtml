@@ -1,114 +1,114 @@
 ﻿@model LOS.Models.NavbarModel
 @{
-	int cartItems = Model.CartItemCount;
-	if (ViewBag.CartItemCount != null)
-	{
-		cartItems = ViewBag.CartItemCount;
-	}
+    int cartItems = Model.CartItemCount;
+    if (ViewBag.CartItemCount != null)
+    {
+        cartItems = ViewBag.CartItemCount;
+    }
 }
-@using LOS.Bussiness.Entities.IdentityModels;
+@using LOS.Domain.Models.Entities.IdentityModels;
 
 <link href="~/Stylesheet/navbar.css" rel="stylesheet" />
 
 <div>
-	<nav class="navbar navbar-inverse" id="navbar-main">
-		<div class="navbar-header">
-			<a href="/Home/Index" class="navbar-brand" style="margin-top: 0px;"><img src="/Resources/Images/logo.png" id="logo"/></a>
-			@Html.ActionLink("Longboard Online Store", "Index", "Home", null, new { @class = "navbar-brand" })
-		</div>
+    <nav class="navbar navbar-inverse" id="navbar-main">
+        <div class="navbar-header">
+            <a href="/Home/Index" class="navbar-brand" style="margin-top: 0px;"><img src="/Resources/Images/logo.png" id="logo" /></a>
+            @Html.ActionLink("Longboard Online Store", "Index", "Home", null, new { @class = "navbar-brand" })
+        </div>
 
-		<div class="collapse navbar-collapse js-navbar-collapse" id="navbar-wrap">
-			<ul class="nav navbar-nav" id="categories-dropdown">
-				<li>
-				</li>
-				<li>@Html.ActionLink("HOME", "Index", "Home", null, new { id = "navbar-button", style = "border-left: solid #d1253f;" })</li>
-				<li class="dropdown mega-dropdown">
-					<a href="" class="dropdown-toggle" id="navbar-button" data-toggle="dropdown">SHOP<span class="caret"></span></a>
-					<ul class="dropdown-menu mega-dropdown-menu" id="categoriesDropDown">
-						<LOS.Bussiness.Entities.Category>
-							@foreach (var category in Model.Categories.Where(p => p.ParentCategoryID == null))
-							{
-								<li class="col-sm-3" id="parentCategory">
-									<ul>
-										<li class="dropdown-header">@Html.ActionLink(category.Name, "Index", "Product", new { id = category.CategoryID, category = category.Name }, new { id = "categoryName", data_id = category.CategoryID, data_filter = category.Name, style = "color: white;" })</li>
-										@{
-											foreach (var childCategory in Model.Categories.Where(c => c.ParentCategoryID != null && c.ParentCategoryID.Value == category.CategoryID))
-											{
-												<li>@Html.ActionLink(childCategory.Name, "Index", "Product", new { id = childCategory.CategoryID }, new { data_id = childCategory.CategoryID, data_filter = childCategory.Name, @class = "btn btn-link", style = "width: 7vw; margin-top: 10px;" })</li>
-											}
-										}
-									</ul>
-								</li>
-							}
-					</ul>
-				</li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right" id="signin-dropdown">
-				@{
-					if (User.Identity.Name == "")
-					{
-						<li class="dropdown" id="account-dropdown" onclick="expandAccountDropdown()">
-							@Html.ActionLink("Sign In", "Login", "Account", null, new { style="pointer-events: none;" })
-							<div class="dropdown-menu" id="dropdown-menu">
-								<div class="pull-right account-dropdown-close-btn" onclick="expandAccountDropdown()"><span class="glyphicon glyphicon-remove"></span></div>
-								<center><h3>Sign In</h3></center>
-								@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "loginForm" }))
-								{
-									@Html.ValidationSummary(true, null, new { @class = "invalid-email" });
+        <div class="collapse navbar-collapse js-navbar-collapse" id="navbar-wrap">
+            <ul class="nav navbar-nav" id="categories-dropdown">
+                <li>
+                </li>
+                <li>@Html.ActionLink("HOME", "Index", "Home", null, new { id = "navbar-button", style = "border-left: solid #d1253f;" })</li>
+                <li class="dropdown mega-dropdown">
+                    <a href="" class="dropdown-toggle" id="navbar-button" data-toggle="dropdown">SHOP<span class="caret"></span></a>
+                    <ul class="dropdown-menu mega-dropdown-menu" id="categoriesDropDown">
+                        <LOS.Bussiness.Entities.Category>
+                            @foreach (var category in Model.Categories.Where(p => p.ParentCategoryID == null))
+                            {
+                                <li class="col-sm-3" id="parentCategory">
+                                    <ul>
+                                        <li class="dropdown-header">@Html.ActionLink(category.Name, "Index", "Product", new { id = category.CategoryID, category = category.Name }, new { id = "categoryName", data_id = category.CategoryID, data_filter = category.Name, style = "color: white;" })</li>
+                                        @{
+                                            foreach (var childCategory in Model.Categories.Where(c => c.ParentCategoryID != null && c.ParentCategoryID.Value == category.CategoryID))
+                                            {
+                                                <li>@Html.ActionLink(childCategory.Name, "Index", "Product", new { id = childCategory.CategoryID }, new { data_id = childCategory.CategoryID, data_filter = childCategory.Name, @class = "btn btn-link", style = "width: 7vw; margin-top: 10px;" })</li>
+                                            }
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="signin-dropdown">
+                @{
+                    if (User.Identity.Name == "")
+                    {
+                        <li class="dropdown" id="account-dropdown" onclick="expandAccountDropdown()">
+                            @Html.ActionLink("Sign In", "Login", "Account", null, new { style = "pointer-events: none;" })
+                            <div class="dropdown-menu" id="dropdown-menu">
+                                <div class="pull-right account-dropdown-close-btn" onclick="expandAccountDropdown()"><span class="glyphicon glyphicon-remove"></span></div>
+                                <center><h3>Sign In</h3></center>
+                                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "loginForm" }))
+                                {
+                                    @Html.ValidationSummary(true, null, new { @class = "invalid-email" });
 
-									<div class="input-group">
-										@Html.TextBoxFor(x => x.Username, new { type = "text", id = "username", @class = "form-control", placeholder = "Username", autocomplete = "off" })
-										<input id="usernameFake" style="display:none" type="text" name="fakeusernameremembered">
-										@Html.TextBoxFor(x => x.Password, new { type = "password", id = "password", @class = "form-control", placeholder = "Password", autocomplete = "off" })
-										<input id="passwordfake" style="display:none" type="password" name="fakepasswordremembered">
-										<button id="login" class="btn btn-danger">Sign In</button>
-									</div>
-									<div id="text-danger-email"></div>
-									<div id="text-danger-password"></div>
-								}
-								<center>
-									<center><h3>Don't have an account?</h3></center>
-									<h3>@Html.ActionLink("Register", "Register", "Account", new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn-info", id = "register" })</h3>
-									<br>
-								</center>
-							</div>
-						</li>
-					}
-					else
-					{
-						<li class="dropdown">
-							@if (User.Role() == "Admin")
-							{
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navbar-button">(admin) @User.FullName()  <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
-							}
-							else if (User.Role() == "Moderator")
-							{
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navbar-button">(moderator) @User.FullName()  <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
-							}
-							else
-							{
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navbar-button">@User.FullName()  <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
-							}
-							<ul class="dropdown-menu" role="menu" style="width: 15vw; border-radius: 10px;">
-								<center style="padding-bottom: 10px; padding-top: 10px;">
-									<li>@Html.ActionLink("Manage Account", "Update", "Account", null, new { id = "manageAccount", @class="btn btn-default", style = "width: 13vw;" })</li>
-								</center>
-								<center>
-									<li>@Html.ActionLink("Change Password", "ChangePassword", "Account", null, new { id = "changePassword", @class = "btn btn-default", style = "width: 13vw;" })</li>
-								</center>
-								<li style="padding-top: 3px;"></li>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(x => x.Username, new { type = "text", id = "username", @class = "form-control", placeholder = "Username", autocomplete = "off" })
+                                        <input id="usernameFake" style="display:none" type="text" name="fakeusernameremembered">
+                                        @Html.TextBoxFor(x => x.Password, new { type = "password", id = "password", @class = "form-control", placeholder = "Password", autocomplete = "off" })
+                                        <input id="passwordfake" style="display:none" type="password" name="fakepasswordremembered">
+                                        <button id="login" class="btn btn-danger">Sign In</button>
+                                    </div>
+                                    <div id="text-danger-email"></div>
+                                    <div id="text-danger-password"></div>
+                                }
+                                <center>
+                                    <center><h3>Don't have an account?</h3></center>
+                                    <h3>@Html.ActionLink("Register", "Register", "Account", new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn-info", id = "register" })</h3>
+                                    <br>
+                                </center>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            @if (User.Role() == "Admin")
+                            {
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navbar-button">(admin) @User.FullName()  <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+                            }
+                            else if (User.Role() == "Moderator")
+                            {
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navbar-button">(moderator) @User.FullName()  <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+                            }
+                            else
+                            {
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navbar-button">@User.FullName()  <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+                            }
+                            <ul class="dropdown-menu" role="menu" style="width: 15vw; border-radius: 10px;">
+                                <center style="padding-bottom: 10px; padding-top: 10px;">
+                                    <li>@Html.ActionLink("Manage Account", "Update", "Account", null, new { id = "manageAccount", @class = "btn btn-default", style = "width: 13vw;" })</li>
+                                </center>
+                                <center>
+                                    <li>@Html.ActionLink("Change Password", "ChangePassword", "Account", null, new { id = "changePassword", @class = "btn btn-default", style = "width: 13vw;" })</li>
+                                </center>
+                                <li style="padding-top: 3px;"></li>
 
-								@using (Html.BeginForm("Logout", "Account", FormMethod.Post, null))
-								{
-									<center><li><input type="submit" class="form-control" id="logout" value="Log out" style="background-color: #fb044a; color: white; margin-bottom: 2.3vh; width: 13vw;" /></li></center>
-								}
-							</ul>
-						</li>
-						<li id="cart"><a href="~/Cart/ManageCart" id="navbar-button">Cart (@cartItems) <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-					}
-				}
-			</ul>
-		</div>
-	</nav>
+                                @using (Html.BeginForm("Logout", "Account", FormMethod.Post, null))
+                                {
+                                    <center><li><input type="submit" class="form-control" id="logout" value="Log out" style="background-color: #fb044a; color: white; margin-bottom: 2.3vh; width: 13vw;" /></li></center>
+                                }
+                            </ul>
+                        </li>
+                        <li id="cart"><a href="~/Cart/ManageCart" id="navbar-button">Cart (@cartItems) <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </nav>
 </div>
 <script src="~/Scripts/script.js"></script>
