@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 
-namespace LOS.App_Start
+namespace LOS.WebApplication.App_Start
 {
     public static class SimpleInjectorConfig
     {

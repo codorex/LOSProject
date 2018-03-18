@@ -1,7 +1,7 @@
 ﻿using LOS.Domain.Models.Entities.IdentityModels;
 using Microsoft.AspNet.Identity;
 
-namespace LOS.App_Start
+namespace LOS.WebApplication.App_Start
 {
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {

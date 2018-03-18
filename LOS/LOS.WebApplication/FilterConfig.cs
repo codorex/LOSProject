@@ -1,19 +1,15 @@
-﻿using LOS.App_Start;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using LOS.WebApplication.App_Start;
 using System.Web.Mvc;
 
-namespace LOS
+namespace LOS.WebApplication
 {
-	public class FilterConfig
-	{
-		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-		{
-			filters.Add(new HandleErrorAttribute());
-			filters.Add(new AuthorizeAttribute());
-			filters.Add(new Log4NetExceptionHandler());
-		}
-	}
+    public class FilterConfig
+    {
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+            filters.Add(new AuthorizeAttribute());
+            filters.Add(new Log4NetExceptionHandler());
+        }
+    }
 }

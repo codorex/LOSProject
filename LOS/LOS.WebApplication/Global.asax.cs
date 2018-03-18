@@ -1,9 +1,10 @@
-﻿using SimpleInjector.Integration.Web.Mvc;
+﻿using LOS.WebApplication;
+using LOS.WebApplication.App_Start;
+using SimpleInjector.Integration.Web.Mvc;
 using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using LOS.App_Start;
 using System.Web.Security;
 
 namespace LOS

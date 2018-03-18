@@ -15,6 +15,7 @@ using LOS.Domain.Models.Entities.IdentityModels;
 using LOS.Domain.Models.Entities;
 using LOS.Common;
 using LOS.Bussiness.Services.CartServices;
+using LOS.WebApplication;
 
 namespace LOS.Controllers
 {
@@ -25,7 +26,7 @@ namespace LOS.Controllers
         private readonly ICommentService commentService;
         private readonly ICategoryService categoryService;
         private readonly IProductService productService;
-		private readonly ICartService cartService;
+        private readonly ICartService cartService;
 
         public AccountController(UserManager<ApplicationUser> userManager, ICommentService commentService, ICategoryService categoryService, IProductService productService, ICartService cartService)
         {
@@ -33,7 +34,7 @@ namespace LOS.Controllers
             this.userManager = userManager;
             this.categoryService = categoryService;
             this.productService = productService;
-			this.cartService = cartService;
+            this.cartService = cartService;
         }
 
         public ActionResult Index()
@@ -174,17 +175,17 @@ namespace LOS.Controllers
                 log.Error("ERROR UPDATING ACCOUNT " + e.InnerException + e.Message);
             }
 
-			var identity = User.Identity as ClaimsIdentity;
+            var identity = User.Identity as ClaimsIdentity;
 
-			Request.GetOwinContext().Authentication.SignOut(Startup.AuthenticationType);
+            Request.GetOwinContext().Authentication.SignOut(Startup.AuthenticationType);
 
-			Dictionary<string, string> updatedClaimsValues = new Dictionary<string, string>();
-			updatedClaimsValues.Add("FirstName", user.FirstName);
-			updatedClaimsValues.Add("FullName", user.FirstName + " " + user.LastName);
+            Dictionary<string, string> updatedClaimsValues = new Dictionary<string, string>();
+            updatedClaimsValues.Add("FirstName", user.FirstName);
+            updatedClaimsValues.Add("FullName", user.FirstName + " " + user.LastName);
 
-			identity.AddOrUpdateClaimsCollection(updatedClaimsValues);
+            identity.AddOrUpdateClaimsCollection(updatedClaimsValues);
 
-			Request.GetOwinContext().Authentication.SignIn(identity);
+            Request.GetOwinContext().Authentication.SignIn(identity);
 
             return RedirectToAction("Index", "Home", null);
         }
@@ -192,9 +193,9 @@ namespace LOS.Controllers
         [AllowAnonymous]
         public PartialViewResult _Navbar()
         {
-			int cartItemCount = Task.Run(async () => { return (await cartService.GetCartAsync(User.Identity.GetUserId())).Count; }).Result;
+            int cartItemCount = Task.Run(async () => { return (await cartService.GetCartAsync(User.Identity.GetUserId())).Count; }).Result;
 
-			List<Category> categories = Task.Run(async () =>
+            List<Category> categories = Task.Run(async () =>
             {
                 categories = await categoryService.GetAllAsync();
                 return categories;
@@ -203,7 +204,7 @@ namespace LOS.Controllers
             NavbarModel model = new NavbarModel
             {
                 Categories = categories,
-				CartItemCount = cartItemCount
+                CartItemCount = cartItemCount
             };
 
             return PartialView("_Navbar", model);

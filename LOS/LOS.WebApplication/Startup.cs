@@ -3,20 +3,20 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using Microsoft.Owin.Infrastructure;
 
-namespace LOS
+namespace LOS.WebApplication
 {
-	public class Startup
-	{
-		public const string AuthenticationType = "ApplicationCookie";
+    public class Startup
+    {
+        public const string AuthenticationType = "ApplicationCookie";
 
-		public void Configuration(IAppBuilder app)
-		{
-			app.UseCookieAuthentication(new CookieAuthenticationOptions
-			{
-				AuthenticationType = AuthenticationType,
-				LoginPath = new PathString("/Account/Login"),
-				CookieName = "authentication_cookie"
-			});
+        public void Configuration(IAppBuilder app)
+        {
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = AuthenticationType,
+                LoginPath = new PathString("/Account/Login"),
+                CookieName = "authentication_cookie"
+            });
         }
-	}
+    }
 }
