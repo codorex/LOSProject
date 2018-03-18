@@ -14,6 +14,7 @@ using LOS.Bussiness.Services.ProductServices;
 using LOS.Domain.Models.Entities.IdentityModels;
 using LOS.Domain.Models.Entities;
 using LOS.Common;
+using LOS.Bussiness.Services.CartServices;
 
 namespace LOS.Controllers
 {
@@ -24,13 +25,15 @@ namespace LOS.Controllers
         private readonly ICommentService commentService;
         private readonly ICategoryService categoryService;
         private readonly IProductService productService;
+		private readonly ICartService cartService;
 
-        public AccountController(UserManager<ApplicationUser> userManager, ICommentService commentService, ICategoryService categoryService, IProductService productService)
+        public AccountController(UserManager<ApplicationUser> userManager, ICommentService commentService, ICategoryService categoryService, IProductService productService, ICartService cartService)
         {
             this.commentService = commentService;
             this.userManager = userManager;
             this.categoryService = categoryService;
             this.productService = productService;
+			this.cartService = cartService;
         }
 
         public ActionResult Index()
@@ -189,7 +192,9 @@ namespace LOS.Controllers
         [AllowAnonymous]
         public PartialViewResult _Navbar()
         {
-            List<Category> categories = Task.Run(async () =>
+			int cartItemCount = Task.Run(async () => { return (await cartService.GetCartAsync(User.Identity.GetUserId())).Count; }).Result;
+
+			List<Category> categories = Task.Run(async () =>
             {
                 categories = await categoryService.GetAllAsync();
                 return categories;
@@ -197,7 +202,8 @@ namespace LOS.Controllers
 
             NavbarModel model = new NavbarModel
             {
-                Categories = categories
+                Categories = categories,
+				CartItemCount = cartItemCount
             };
 
             return PartialView("_Navbar", model);
