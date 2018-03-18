@@ -3,12 +3,12 @@ using System.Net.Mail;
 
 namespace LOS.EmailClient
 {
-    class CustomEmailClient
+    public static class CustomEmailClient
     {
-        private readonly MailAddress fromAddress = new MailAddress("longboardonlinestore@gmail.com");
-        private readonly string fromPassword = "123admin";
+        private static MailAddress fromAddress = new MailAddress("longboardonlinestore@gmail.com");
+        private static string fromPassword = "123admin";
 
-        public void SendEmail(MailAddress addressToSendTo, string subject, string body)
+        public static void SendEmail(MailAddress addressToSendTo, string subject, string body)
         {
             SmtpClient smtp = new SmtpClient
             {
@@ -18,7 +18,6 @@ namespace LOS.EmailClient
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-
             };
 
             using (var message = new MailMessage(fromAddress, addressToSendTo)

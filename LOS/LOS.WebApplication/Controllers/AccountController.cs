@@ -16,6 +16,7 @@ using LOS.Domain.Models.Entities;
 using LOS.Common;
 using LOS.Bussiness.Services.CartServices;
 using LOS.WebApplication;
+using LOS.EmailClient;
 
 namespace LOS.Controllers
 {
@@ -186,6 +187,8 @@ namespace LOS.Controllers
             identity.AddOrUpdateClaimsCollection(updatedClaimsValues);
 
             Request.GetOwinContext().Authentication.SignIn(identity);
+
+            CustomEmailClient.SendEmail(new System.Net.Mail.MailAddress(user.Email), "Account Changes", "There have been changes made to your account");
 
             return RedirectToAction("Index", "Home", null);
         }

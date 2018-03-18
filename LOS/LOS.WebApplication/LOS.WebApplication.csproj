@@ -451,6 +451,10 @@
       <Project>{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}</Project>
       <Name>LOS.Domain.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LOS.EmailClient\LOS.EmailClient.csproj">
+      <Project>{ba58a193-c621-4761-bc7b-cec9f5f67833}</Project>
+      <Name>LOS.EmailClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
