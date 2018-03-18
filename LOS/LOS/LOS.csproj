@@ -443,6 +443,10 @@
       <Project>{3b34909e-da89-4470-9758-fb231028ce90}</Project>
       <Name>LOS.Bussiness</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LOS.Common\LOS.Common.csproj">
+      <Project>{0e65ef35-95a3-45fc-9940-d567165c443a}</Project>
+      <Name>LOS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LOS.Domain.Models\LOS.Domain.Models.csproj">
       <Project>{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}</Project>
       <Name>LOS.Domain.Models</Name>
