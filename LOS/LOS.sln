@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Domain.Models", "LOS.Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Common", "LOS.Common\LOS.Common.csproj", "{0E65EF35-95A3-45FC-9940-D567165C443A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.EmailClient", "LOS.EmailClient\LOS.EmailClient.csproj", "{BA58A193-C621-4761-BC7B-CEC9F5F67833}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0E65EF35-95A3-45FC-9940-D567165C443A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E65EF35-95A3-45FC-9940-D567165C443A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E65EF35-95A3-45FC-9940-D567165C443A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA58A193-C621-4761-BC7B-CEC9F5F67833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA58A193-C621-4761-BC7B-CEC9F5F67833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA58A193-C621-4761-BC7B-CEC9F5F67833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA58A193-C621-4761-BC7B-CEC9F5F67833}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
