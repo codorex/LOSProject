@@ -13,6 +13,7 @@ using System;
 using LOS.Bussiness.Services.ProductServices;
 using LOS.Domain.Models.Entities.IdentityModels;
 using LOS.Domain.Models.Entities;
+using LOS.Common;
 
 namespace LOS.Controllers
 {
@@ -169,6 +170,18 @@ namespace LOS.Controllers
             {
                 log.Error("ERROR UPDATING ACCOUNT " + e.InnerException + e.Message);
             }
+
+			var identity = User.Identity as ClaimsIdentity;
+
+			Request.GetOwinContext().Authentication.SignOut(Startup.AuthenticationType);
+
+			Dictionary<string, string> updatedClaimsValues = new Dictionary<string, string>();
+			updatedClaimsValues.Add("FirstName", user.FirstName);
+			updatedClaimsValues.Add("FullName", user.FirstName + " " + user.LastName);
+
+			identity.AddOrUpdateClaimsCollection(updatedClaimsValues);
+
+			Request.GetOwinContext().Authentication.SignIn(identity);
 
             return RedirectToAction("Index", "Home", null);
         }
