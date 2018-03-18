@@ -25,8 +25,7 @@ function removeFromCart(obj) {
 		type: 'POST',
 		data: { "productId": id },
 		success: function () {
-			$(row).css('pointer-events', 'none');
-			$(row).fadeOut(500);
+			location.reload();
 		}
 	});
 

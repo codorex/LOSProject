@@ -1,11 +1,15 @@
-﻿@model List<LOS.Domain.Models.Entities.Product>
+﻿@model LOS.WebApplication.Models.CartViewModel
 @using LOS.Domain.Models.Entities.IdentityModels;
 @{
-    ViewBag.Title = "Cart";
-    ViewBag.CartItemCount = Model.Count;
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    decimal totalCost = 0;
-    int itemCount = Model.Count;
+	ViewBag.Title = "Cart";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	decimal totalCost = 0;
+	int itemCount = 0;
+
+	foreach (var item in Model.CartItems)
+	{
+		itemCount += item.Value.Count;
+	}
 }
 <link href="~/Stylesheet/accountServicesStyle.css" rel="stylesheet" />
 <link href="~/Stylesheet/style.css" rel="stylesheet" />
@@ -23,21 +27,22 @@
         </div>
         <div class="panel-body">
             <ul class="list-group">
-                @foreach (var product in Model)
+                @foreach (var productMapping in Model.CartItems)
                 {
-                    totalCost += product.Price;
+                    totalCost += productMapping.Value[0].Price * productMapping.Value.Count;
                     <li class="list-group-item">
                         <div class="checkbox">
+							<img id="images-preview" src="~/ImageHandler.ashx?id=@productMapping.Value[0].Images[0].FileID.Value" width="60"/>
                             <label for="checkbox">
-                                @Html.ActionLink(product.Name, "Details", "Product", new { id = product.ProductID }, null)
+                                @Html.ActionLink(productMapping.Value[0].Name + $" ({productMapping.Value.Count})", "Details", "Product", new { id = productMapping.Key }, null)
                             </label>
                         </div>
                         <div class="pull-right action-buttons" style="padding-left: 10px;">
-                            <button onclick="removeFromCart(this);" data-productId="@product.ProductID" data-price="@product.Price" data-cartItemsCount="@Model.Count" class="btn btn-danger" style="padding: 2px; padding-left: 5px;"><span class="glyphicon glyphicon-trash"></span></button>
+                            <button onclick="removeFromCart(this);" data-productId="@productMapping.Key" data-price="@productMapping.Value[0].Price * productMapping.Value.Count" data-cartItemsCount="@itemCount" class="btn btn-danger" style="padding: 2px; padding-left: 5px;"><span class="glyphicon glyphicon-minus"></span></button>
                         </div>
                         <div class="pull-right">
                             <label for="checkbox">
-                                <small id="price">@product.Price</small><small> $</small>
+                                <small id="price">@productMapping.Value[0].Price</small><small> (total: @(productMapping.Value[0].Price * productMapping.Value.Count)) $</small>
                             </label>
                         </div>
                     </li>
@@ -52,7 +57,7 @@
                     </h4>
                 </div>
                 <div class="pull-right" style="float: right; padding-right: 10px;">
-                    <button class="btn btn-danger">Chechout <span class="glyphicon glyphicon-arrow-right" style="padding-left: 5px;"></span></button>
+                    <button class="btn btn-danger">Checkout <span class="glyphicon glyphicon-arrow-right" style="padding-left: 5px;"></span></button>
                 </div>
             </div>
         </div>
