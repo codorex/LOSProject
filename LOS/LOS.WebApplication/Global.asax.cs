@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 
-namespace LOS
+namespace LOS.WebApplication
 {
     public class MvcApplication : HttpApplication
     {

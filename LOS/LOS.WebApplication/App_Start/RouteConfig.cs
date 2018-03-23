@@ -14,7 +14,8 @@ namespace LOS.WebApplication.App_Start
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}/{page}/{keyword}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, page = UrlParameter.Optional, keyword = "" }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, page = UrlParameter.Optional, keyword = "" },
+				namespaces: new[] { "LOS.WebApplication.Controllers" }
             );
         }
     }
