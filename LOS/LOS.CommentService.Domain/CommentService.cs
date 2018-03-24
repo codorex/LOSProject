@@ -1,10 +1,12 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.CommentModel.Domain;
+using LOS.DatabaseContext;
+using LOS.ProducModel.Domain;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LLOS.CommentService.Domain
+namespace LOS.CommentService.Domain
 {
     public class CommentService : ICommentService
     {

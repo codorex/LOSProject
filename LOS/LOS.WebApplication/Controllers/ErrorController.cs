@@ -1,6 +1,6 @@
-﻿using LOS.Bussiness.Services.CategoryServices;
-using LOS.Domain.Models.Entities;
-using LOS.Models;
+﻿using LOS.CategoryModel.Domain;
+using LOS.CategoryService.Domain;
+using LOS.WebApplication.Models;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;

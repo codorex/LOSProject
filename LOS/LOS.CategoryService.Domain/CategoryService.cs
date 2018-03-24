@@ -1,5 +1,5 @@
-﻿using LOS.Bussiness;
-using LOS.Domain.Models.Entities;
+﻿using LOS.CategoryModel.Domain;
+using LOS.DatabaseContext;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;

@@ -54,14 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationRole.cs" />
-    <Compile Include="ApplicationUser.cs" />
     <Compile Include="GenericIdentityExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LOS.Product.Domain\LOS.Product.Domain.csproj">
+    <ProjectReference Include="..\LOS.Product.Domain\LOS.ProducModel.Domain.csproj">
       <Project>{C6A84B17-B437-4ACE-B174-A74C55FECBA6}</Project>
-      <Name>LOS.Product.Domain</Name>
+      <Name>LOS.ProducModel.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

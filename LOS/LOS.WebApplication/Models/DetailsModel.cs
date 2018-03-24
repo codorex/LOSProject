@@ -1,8 +1,8 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.CategoryModel.Domain;
 using System;
 using System.Collections.Generic;
 
-namespace LOS.Models
+namespace LOS.WebApplication.Models
 {
     public class DetailsModel
     {
@@ -14,7 +14,7 @@ namespace LOS.Models
         public decimal Price { get; set; }
         public string Description { get; set; }
         public decimal Rating { get; set; }
-        public List<Image> Images { get; set; }
+        public List<LOS.ImageModel.Domain.Image> Images { get; set; }
         public int CommentsCount { get; set; }
         public int RatingVoteCount { get; set; }
         public bool UserHasVoted { get; set; }

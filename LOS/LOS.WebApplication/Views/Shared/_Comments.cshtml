@@ -1,5 +1,6 @@
-﻿@model LOS.Models.CommentsModel
-@using LOS.Domain.Models.Entities.IdentityModels;
+﻿@model LOS.WebApplication.Models.CommentsModel
+@using LOS.IdentityModels.Domain;
+@using LOS.ProducModel.Domain;
 @{
     string userId = Model.CurrentUserId;
     string userName = User.Identity.Name == "" ? "" : User.Identity.Name;

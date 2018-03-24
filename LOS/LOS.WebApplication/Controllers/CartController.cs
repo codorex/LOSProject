@@ -1,9 +1,9 @@
-﻿using LOS.Bussiness.Services.CartServices;
-using LOS.Bussiness.Services.CategoryServices;
-using LOS.Bussiness.Services.ProductServices;
-using LOS.Domain.Models.Entities;
-using LOS.Models;
+﻿using LOS.CartService.Domain;
+using LOS.CategoryModel.Domain;
+using LOS.CategoryService.Domain;
 using LOS.WebApplication.Models;
+using LOS.ProducModel.Domain;
+using LOS.ProductService.Domain;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,27 +33,27 @@ namespace LOS.Controllers
                 return RedirectToAction("Index", "Home", null);
             }
 
-			List<Product> cartItems = (await cartService.GetCartAsync(User.Identity.GetUserId()));
-			List<Product> distinctItems = cartItems.Distinct().ToList();
+            List<Product> cartItems = (await cartService.GetCartAsync(User.Identity.GetUserId()));
+            List<Product> distinctItems = cartItems.Distinct().ToList();
 
-			for (int i = 0; i < distinctItems.Count; i++)
-			{
-				distinctItems[i].Images = await productService.GetImagesAsync(distinctItems[i].ProductID);
-			}
+            for (int i = 0; i < distinctItems.Count; i++)
+            {
+                distinctItems[i].Images = await productService.GetImagesAsync(distinctItems[i].ProductID);
+            }
 
-			var cartItemsMapping = new Dictionary<int, List<Product>>();
+            var cartItemsMapping = new Dictionary<int, List<Product>>();
 
-			foreach (var item in cartItems)
-			{
-				if (cartItemsMapping.ContainsKey(item.ProductID) == false)
-				{
-					cartItemsMapping.Add(item.ProductID, new List<Product>());
-				}
+            foreach (var item in cartItems)
+            {
+                if (cartItemsMapping.ContainsKey(item.ProductID) == false)
+                {
+                    cartItemsMapping.Add(item.ProductID, new List<Product>());
+                }
 
-				cartItemsMapping[item.ProductID].Add(item);
-			}
+                cartItemsMapping[item.ProductID].Add(item);
+            }
 
-			var model = new CartViewModel() { CartItems = cartItemsMapping };
+            var model = new CartViewModel() { CartItems = cartItemsMapping };
 
             return View(model);
         }

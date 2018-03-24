@@ -332,21 +332,61 @@
     <Folder Include="Content\Images\Longboards\Wheels\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LOS.Bussiness\LOS.Bussiness.csproj">
+    <ProjectReference Include="..\LOS.Database.Context\LOS.DatabaseContext.csproj">
       <Project>{3b34909e-da89-4470-9758-fb231028ce90}</Project>
-      <Name>LOS.Bussiness</Name>
+      <Name>LOS.DatabaseContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.CartService.Domain\LOS.CartService.Domain.csproj">
+      <Project>{6F1B565F-8367-4194-9157-57CCECE52683}</Project>
+      <Name>LOS.CartService.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.Category.Domain\LOS.CategoryModel.Domain.csproj">
+      <Project>{EA182E62-928B-46B3-B9E6-CEBC0134F655}</Project>
+      <Name>LOS.CategoryModel.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.CategoryService.Domain\LOS.CategoryService.Domain.csproj">
+      <Project>{2FF42F01-3298-488B-98AB-9FC84E7743C2}</Project>
+      <Name>LOS.CategoryService.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.Comment.Domain\LOS.CommentModel.Domain.csproj">
+      <Project>{6065FF99-7879-4954-A1C8-2C880D917DF0}</Project>
+      <Name>LOS.CommentModel.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.CommentService.Domain\LOS.CommentService.Domain.csproj">
+      <Project>{93D77C42-9957-41BD-9FCE-316F68676441}</Project>
+      <Name>LOS.CommentService.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\LOS.Common\LOS.Common.csproj">
       <Project>{0e65ef35-95a3-45fc-9940-d567165c443a}</Project>
       <Name>LOS.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LOS.Domain.Models\LOS.Domain.Models.csproj">
-      <Project>{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}</Project>
-      <Name>LOS.Domain.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LOS.EmailClient\LOS.EmailClient.csproj">
       <Project>{ba58a193-c621-4761-bc7b-cec9f5f67833}</Project>
       <Name>LOS.EmailClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.File.Domain\LOS.FileModel.Domain.csproj">
+      <Project>{D5BAF0F5-1C6B-468B-879C-5C4FE38D469C}</Project>
+      <Name>LOS.FileModel.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.IdentityModels.Domain\LOS.IdentityModels.Domain.csproj">
+      <Project>{77C8AD15-D38F-4DE7-B45E-7BE6CF85B3C7}</Project>
+      <Name>LOS.IdentityModels.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.Image.Domain\LOS.ImageModel.Domain.csproj">
+      <Project>{3D8540B7-063A-448A-B3C7-061CDF64F70A}</Project>
+      <Name>LOS.ImageModel.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.Product.Domain\LOS.ProducModel.Domain.csproj">
+      <Project>{C6A84B17-B437-4ACE-B174-A74C55FECBA6}</Project>
+      <Name>LOS.ProducModel.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.ProductService.Domain\LOS.ProductService.Domain.csproj">
+      <Project>{D39648EA-CD00-4055-B3FE-B5D37555D4D9}</Project>
+      <Name>LOS.ProductService.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.UserService.Domain\LOS.UserService.Domain.csproj">
+      <Project>{B279876D-D77C-4A80-B4BC-E51650F023B6}</Project>
+      <Name>LOS.UserService.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

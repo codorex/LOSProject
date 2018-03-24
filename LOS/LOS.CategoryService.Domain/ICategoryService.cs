@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using LOS.CategoryModel.Domain;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LOS.CategoryService.Domain
 {
     public interface ICategoryService
     {
-        Task<Category.Domain.Category> GetAsync(int categoryID);
+        Task<Category> GetAsync(int categoryID);
 
-        Task<List<Category.Domain.Category>> GetListAsync(int pageNumber, int pageSize);
+        Task<List<Category>> GetListAsync(int pageNumber, int pageSize);
 
-        Task CreateAsync(Category.Domain.Category category);
+        Task CreateAsync(Category category);
 
-        Task UpdateAsync(Category.Domain.Category category);
+        Task UpdateAsync(Category category);
 
         Task DeleteAsync(int categoryID);
 
-        Task<List<Category.Domain.Category>> GetAllAsync();
+        Task<List<Category>> GetAllAsync();
     }
 }

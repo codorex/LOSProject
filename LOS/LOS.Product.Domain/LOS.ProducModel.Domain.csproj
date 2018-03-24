@@ -55,17 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LOS.Domain.Models\LOS.Domain.Models.csproj">
-      <Project>{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}</Project>
-      <Name>LOS.Domain.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LOS.IdentityModels.Domain\LOS.IdentityModels.Domain.csproj">
-      <Project>{77c8ad15-d38f-4de7-b45e-7be6cf85b3c7}</Project>
-      <Name>LOS.IdentityModels.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LOS.Image.Domain\LOS.Image.Domain.csproj">
+    <ProjectReference Include="..\LOS.Image.Domain\LOS.ImageModel.Domain.csproj">
       <Project>{3d8540b7-063a-448a-b3c7-061cdf64f70a}</Project>
-      <Name>LOS.Image.Domain</Name>
+      <Name>LOS.ImageModel.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

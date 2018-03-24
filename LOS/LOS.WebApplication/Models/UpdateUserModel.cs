@@ -1,7 +1,7 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.ProducModel.Domain;
 using System.Collections.Generic;
 
-namespace LOS.Models
+namespace LOS.WebApplication.Models
 {
     public class UpdateUserModel
     {

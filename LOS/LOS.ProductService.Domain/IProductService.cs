@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using LOS.DatabaseContext;
+using LOS.FileModel.Domain;
+using LOS.ImageModel.Domain;
+using LOS.ProducModel.Domain;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LOS.ProductService.Domain

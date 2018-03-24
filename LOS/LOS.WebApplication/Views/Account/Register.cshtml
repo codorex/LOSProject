@@ -1,7 +1,7 @@
-﻿@model LOS.Models.RegisterModel
+﻿@model LOS.WebApplication.Models.RegisterModel
 @{
-	ViewBag.Title = "Register";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link href="~/Stylesheet/accountServicesStyle.css" rel="stylesheet" />
@@ -17,32 +17,43 @@
                             <div>
                                 <h3>Register</h3>
                             </div>
-								@Html.ValidationSummary(false, null, new { @class = "invalid-email" })
-								@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "loginForm", id = "form" }))
-								{
-									<div class="input-group" style="margin-bottom: 0px;">
-										<label for="username" style="width: 100%;">Username: 
-										@Html.TextBoxFor(x => x.Username, new { type = "text", id = "usernameNew", @class = "form-control", placeholder = "Username" })</label>
-										
-										<label for="firstname" style="width: 100%;">First Name:
-										@Html.TextBoxFor(x => x.FirstName, new { type = "text", id = "firstname", @class = "form-control", placeholder = "First Name" })</label>
-										
-										<label for="lastname" style="width: 100%;">Last Name:
-										@Html.TextBoxFor(x => x.LastName, new { type = "text", id = "lastname", @class = "form-control", placeholder = "Last Name" })</label>
-										
-										<label for="email" style="width: 100%;">E-mail:
-										@Html.TextBoxFor(x => x.Email, new { type = "email", id = "email", @class = "form-control", placeholder = "Email Adress" })</label>
-										
-										<label for="newPassword" style="width: 100%;">Password:
-										@Html.TextBoxFor(x => x.Password, new { type = "password", id = "newPassword", @class = "form-control", placeholder = "Password" })</label>
-										<label for="confirmpassword" style="width: 100%;">
-										Confirm Password:
-										@Html.TextBoxFor(x => x.PasswordConfirm, new { type = "password", id = "confirmpassword", @class = "form-control", placeholder = "Confirm Password" })</label>
-										
-										@Html.HiddenFor(x => x.ReturnUrl, new { value = Model.ReturnUrl })
-										<input type="submit" id="submit" class="btn btn-danger" value="Register">
-</div>
-								}
+                            @Html.ValidationSummary(false, null, new { @class = "invalid-email" })
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "loginForm", id = "form" }))
+                            {
+                                <div class="input-group" style="margin-bottom: 0px;">
+                                    <label for="username" style="width: 100%;">
+                                        Username:
+                                        @Html.TextBoxFor(x => x.Username, new { type = "text", id = "usernameNew", @class = "form-control", placeholder = "Username" })
+                                    </label>
+
+                                    <label for="firstname" style="width: 100%;">
+                                        First Name:
+                                        @Html.TextBoxFor(x => x.FirstName, new { type = "text", id = "firstname", @class = "form-control", placeholder = "First Name" })
+                                    </label>
+
+                                    <label for="lastname" style="width: 100%;">
+                                        Last Name:
+                                        @Html.TextBoxFor(x => x.LastName, new { type = "text", id = "lastname", @class = "form-control", placeholder = "Last Name" })
+                                    </label>
+
+                                    <label for="email" style="width: 100%;">
+                                        E-mail:
+                                        @Html.TextBoxFor(x => x.Email, new { type = "email", id = "email", @class = "form-control", placeholder = "Email Adress" })
+                                    </label>
+
+                                    <label for="newPassword" style="width: 100%;">
+                                        Password:
+                                        @Html.TextBoxFor(x => x.Password, new { type = "password", id = "newPassword", @class = "form-control", placeholder = "Password" })
+                                    </label>
+                                    <label for="confirmpassword" style="width: 100%;">
+                                        Confirm Password:
+                                        @Html.TextBoxFor(x => x.PasswordConfirm, new { type = "password", id = "confirmpassword", @class = "form-control", placeholder = "Confirm Password" })
+                                    </label>
+
+                                    @Html.HiddenFor(x => x.ReturnUrl, new { value = Model.ReturnUrl })
+                                    <input type="submit" id="submit" class="btn btn-danger" value="Register">
+                                </div>
+                            }
                             <div id="errors"></div>
                         </div>
                     </div>
@@ -50,5 +61,5 @@
             </div>
         </div>
     </center>
-	<script src="~/Scripts/Validation.js"></script>
+    <script src="~/Scripts/Validation.js"></script>
 </body>

@@ -1,26 +1,26 @@
-﻿@model LOS.Models.DisplayModel
+﻿@model LOS.WebApplication.Models.DisplayModel
 @{Html.RenderPartial("_DisplayProducts", Model);}
 <hr style="width: 100%;" />
 <div style="display: inline-block;">
-	<div class="btn-toolbar demoPadder" role="toolbar" aria-label="Toolbar with button groups">
-		<div class="btn-group" role="group" aria-label="First group">
-			<ul>
-				@{
-					for (int i = 1; i <= Model.PageCount; i++)
-					{
-						if (Model.PageNumber == i)
-						{
-							<li><h2>@Html.ActionLink(i.ToString(), "Index", new { page = i }, new { @class = "btn btn-default", style = "pointer-events:none;" })</h2></li>
-						}
-						else
-						{
-							<li><h2>@Html.ActionLink(i.ToString(), "Index", new { id = Model.Category.CategoryID, page = i, keyword = "" }, new { id = "pageBtn", @class = "btn btn-default" })</h2></li>
+    <div class="btn-toolbar demoPadder" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            <ul>
+                @{
+                    for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        if (Model.PageNumber == i)
+                        {
+                            <li><h2>@Html.ActionLink(i.ToString(), "Index", new { page = i }, new { @class = "btn btn-default", style = "pointer-events:none;" })</h2></li>
+                        }
+                        else
+                        {
+                            <li><h2>@Html.ActionLink(i.ToString(), "Index", new { id = Model.Category.CategoryID, page = i, keyword = "" }, new { id = "pageBtn", @class = "btn btn-default" })</h2></li>
 
-						}
-					}
-				}
-			</ul>
-		</div>
-	</div>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
 </div>
 <hr style="width: 100%;" />

@@ -1,8 +1,8 @@
-﻿using LOS.Domain.Models.Entities;
-using LOS.Domain.Models.Entities.IdentityModels;
+﻿using LOS.CommentModel.Domain;
+using LOS.ProducModel.Domain;
 using System.Collections.Generic;
 
-namespace LOS.Models
+namespace LOS.WebApplication.Models
 {
     public class CommentsModel
     {

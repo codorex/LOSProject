@@ -3,6 +3,7 @@ using LOS.DatabaseContext;
 using LOS.ProducModel.Domain;
 using LOS.ProductService.Domain;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 

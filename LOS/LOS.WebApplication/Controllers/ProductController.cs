@@ -1,11 +1,14 @@
-﻿using LOS.Bussiness.Services;
-using LOS.Bussiness.Services.CartServices;
-using LOS.Bussiness.Services.CategoryServices;
-using LOS.Bussiness.Services.CommentServices;
-using LOS.Bussiness.Services.ProductServices;
-using LOS.Domain.Models.Entities;
-using LOS.Domain.Models.Entities.IdentityModels;
-using LOS.Models;
+﻿using LOS.CartService.Domain;
+using LOS.CategoryModel.Domain;
+using LOS.CategoryService.Domain;
+using LOS.CommentModel.Domain;
+using LOS.CommentService.Domain;
+using LOS.DatabaseContext;
+using LOS.FileModel.Domain;
+using LOS.IdentityModels.Domain;
+using LOS.WebApplication.Models;
+using LOS.ProducModel.Domain;
+using LOS.ProductService.Domain;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -84,7 +87,7 @@ namespace LOS.Controllers
             }
 
             // get thumbnail image for the product which will be displayed in the product list
-            var images = new List<Image>();
+            var images = new List<LOS.ImageModel.Domain.Image>();
 
             foreach (var product in productsPaged.Collection)
             {
@@ -159,7 +162,7 @@ namespace LOS.Controllers
             bool userHasVoted = await productService.CheckIfUserHasVotedAsync(User.Identity.GetUserId(), id);
 
             Category category = await categoryService.GetAsync(product.CategoryID);
-            List<Image> images = await productService.GetImagesAsync(id);
+            List<LOS.ImageModel.Domain.Image> images = await productService.GetImagesAsync(id);
 
             var model = new DetailsModel
             {
@@ -250,7 +253,7 @@ namespace LOS.Controllers
                 await productService.UploadFileAsync(newFile);
 
                 newFile = await productService.GetFileByNameAsync(newFile.Name);
-                await productService.AddImageAsync(new Image { Name = newFile.Name, ProductID = productId, FileID = newFile.FileID });
+                await productService.AddImageAsync(new LOS.ImageModel.Domain.Image { Name = newFile.Name, ProductID = productId, FileID = newFile.FileID });
             }
 
             return RedirectToAction("Details", "Product", new { id = productId });

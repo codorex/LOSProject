@@ -1,34 +1,34 @@
-﻿@model LOS.Models.NavbarModel
+﻿@model LOS.WebApplication.Models.NavbarModel
 
 @{
-	ViewBag.Title = "Logan";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Logan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Stylesheet/accountServicesStyle.css" rel="stylesheet" />
 <body>
-    <div style="margin-top: 60px;"> 
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-md-offset-4 text-center">
-					<div class="search-box">
-						<div>
-							<h3>Log In</h3>
-						</div>
-							
-							@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "loginForm" }))
-							{
-								@Html.ValidationSummary(false, null, new { @class="invalid-email" });
-								<div class="input-group">
-									@Html.TextBoxFor(x => x.Email, new { type = "email", id = "email", @class = "form-control", placeholder = "Email Adress" })
-									@Html.TextBoxFor(x => x.Password, new { type = "password", id = "password", @class = "form-control", placeholder = "Password" })
-									<input type="submit" id="login" class="form-control" value="Submit">
-								</div>
-								<div id="text-danger-email"></div>
-								<div id="text-danger-password"></div>
-							}
-					</div>
-				</div>
-			</div>
-		</div>
+    <div style="margin-top: 60px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <div class="search-box">
+                        <div>
+                            <h3>Log In</h3>
+                        </div>
+
+                        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "loginForm" }))
+                        {
+                            @Html.ValidationSummary(false, null, new { @class = "invalid-email" });
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.Email, new { type = "email", id = "email", @class = "form-control", placeholder = "Email Adress" })
+                                @Html.TextBoxFor(x => x.Password, new { type = "password", id = "password", @class = "form-control", placeholder = "Password" })
+                                <input type="submit" id="login" class="form-control" value="Submit">
+                            </div>
+                            <div id="text-danger-email"></div>
+                            <div id="text-danger-password"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>

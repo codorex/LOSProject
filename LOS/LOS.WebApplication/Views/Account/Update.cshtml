@@ -1,102 +1,102 @@
-﻿@model LOS.Models.UpdateUserModel
+﻿@model LOS.WebApplication.Models.UpdateUserModel
 
 @{
-	ViewBag.Title = "Manage Account";
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	int ratedProductsCount = Model.RatedProducts.Count;
-	int reviewedProductsCount = Model.ReviewedProducts.Count;
+    ViewBag.Title = "Manage Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int ratedProductsCount = Model.RatedProducts.Count;
+    int reviewedProductsCount = Model.ReviewedProducts.Count;
 }
 
 <link href="~/Stylesheet/accountServicesStyle.css" rel="stylesheet" />
 <link href="~/Stylesheet/style.css" rel="stylesheet" />
 <body>
-	<div class="user-stats-button">
-		<div class="btn stats-btn" onclick="showStats()">Stats <span class=" glyphicon glyphicon-stats"></span></div>
-		<div class="user-stats-wrapper">
-			<div class="user-stats-container">
-				<div class="user-stats-header">
-					<h3 class="text-center">Profile stats: </h3>
-				</div>
-				<div>
-					<ul class="list-group">
-						<li class="list-group-item reviewedProduct-button" onclick="expandReviewedProducts()">
-							<div class="product-list-header">
-								<strong>Products reviewed: </strong>@reviewedProductsCount
-								<span class="glyphicon glyphicon-chevron-down pull-right"></span>
-							</div>
-							<div class="user-stats-reviewedProducts-container">
-								<div>
-									<ul class="list-group">
-										@foreach (var product in Model.ReviewedProducts)
-										{
-											<li class="list-group-item ratedProduct" onclick="openProduct('@product.ProductID')">
-												@product.Name <span class="glyphicon glyphicon-export pull-right"></span>
-											</li>
-										}
-									</ul>
-								</div>
-							</div>
-						</li>
-						<li class="list-group-item ratedProducts-button" onclick="expandRatedProducts()">
-							<div class="product-list-header">
-								<strong>Products rated: </strong>@ratedProductsCount
-								<span class="glyphicon glyphicon-chevron-down pull-right"></span>
-							</div>
-							<div class="user-stats-ratedProducts-container">
-								<div>
-									<ul class="list-group">
-										@foreach (var product in Model.RatedProducts)
-										{
-											<li class="list-group-item ratedProduct" onclick="openProduct('@product.ProductID')">
-												@product.Name <span class="glyphicon glyphicon-export pull-right"></span>
-											</li>
-										}
-									</ul>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<center>
-		<div style="margin-top: 60px;">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-offset-4">
-						<div class="search-box">
-							<div>
-								<h3>Update account information</h3>
-							</div>
+    <div class="user-stats-button">
+        <div class="btn stats-btn" onclick="showStats()">Stats <span class=" glyphicon glyphicon-stats"></span></div>
+        <div class="user-stats-wrapper">
+            <div class="user-stats-container">
+                <div class="user-stats-header">
+                    <h3 class="text-center">Profile stats: </h3>
+                </div>
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item reviewedProduct-button" onclick="expandReviewedProducts()">
+                            <div class="product-list-header">
+                                <strong>Products reviewed: </strong>@reviewedProductsCount
+                                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                            </div>
+                            <div class="user-stats-reviewedProducts-container">
+                                <div>
+                                    <ul class="list-group">
+                                        @foreach (var product in Model.ReviewedProducts)
+                                        {
+                                            <li class="list-group-item ratedProduct" onclick="openProduct('@product.ProductID')">
+                                                @product.Name <span class="glyphicon glyphicon-export pull-right"></span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item ratedProducts-button" onclick="expandRatedProducts()">
+                            <div class="product-list-header">
+                                <strong>Products rated: </strong>@ratedProductsCount
+                                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                            </div>
+                            <div class="user-stats-ratedProducts-container">
+                                <div>
+                                    <ul class="list-group">
+                                        @foreach (var product in Model.RatedProducts)
+                                        {
+                                            <li class="list-group-item ratedProduct" onclick="openProduct('@product.ProductID')">
+                                                @product.Name <span class="glyphicon glyphicon-export pull-right"></span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>
+        <div style="margin-top: 60px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-4">
+                        <div class="search-box">
+                            <div>
+                                <h3>Update account information</h3>
+                            </div>
 
-							@Html.ValidationSummary(false, null, new { @class = "invalid-email" })
+                            @Html.ValidationSummary(false, null, new { @class = "invalid-email" })
 
-							@using (Html.BeginForm("Update", "Account", FormMethod.Post, new { @class = "loginForm", id = "form", style = "background-color: #3d4966; padding: 2em; padding-bottom: 5em; border-radius: 5px;" }))
-							{
-								<div class="input-group">
-									<label for="firstname" style="width: 100%;padding-bottom: 10px;">First name: @Html.TextBoxFor(x => x.FirstName, new { type = "text", id = "firstname", @class = "form-control", placeholder = "First Name", style = "background-color: #687187; color: white; border: none; width: 100%;" })</label>
+                            @using (Html.BeginForm("Update", "Account", FormMethod.Post, new { @class = "loginForm", id = "form", style = "background-color: #3d4966; padding: 2em; padding-bottom: 5em; border-radius: 5px;" }))
+                            {
+                                <div class="input-group">
+                                    <label for="firstname" style="width: 100%;padding-bottom: 10px;">First name: @Html.TextBoxFor(x => x.FirstName, new { type = "text", id = "firstname", @class = "form-control", placeholder = "First Name", style = "background-color: #687187; color: white; border: none; width: 100%;" })</label>
 
-									<label for="lastname" style="width: 100%;padding-bottom: 10px;">Last name: @Html.TextBoxFor(x => x.LastName, new { type = "text", id = "lastname", @class = "form-control", placeholder = "Last Name", style = "background-color: #687187; color: white; border: none;" })</label>
+                                    <label for="lastname" style="width: 100%;padding-bottom: 10px;">Last name: @Html.TextBoxFor(x => x.LastName, new { type = "text", id = "lastname", @class = "form-control", placeholder = "Last Name", style = "background-color: #687187; color: white; border: none;" })</label>
 
-									<label for="username" style="width: 100%;padding-bottom: 10px;">Username: @Html.TextBoxFor(x => x.Username, new { type = "text", id = "username", @class = "form-control", placeholder = "Username", style = "background-color: #687187; color: white; border: none; width: 100%;" })</label>
+                                    <label for="username" style="width: 100%;padding-bottom: 10px;">Username: @Html.TextBoxFor(x => x.Username, new { type = "text", id = "username", @class = "form-control", placeholder = "Username", style = "background-color: #687187; color: white; border: none; width: 100%;" })</label>
 
-									<label for="email" style="width: 100%;padding-bottom: 10px;">Email: @Html.TextBoxFor(x => x.Email, new { type = "email", id = "email", @class = "form-control", placeholder = "Email Adress", @readonly = "readonly", style = "background-color: #525c74; color: white; border: none;" })</label>
+                                    <label for="email" style="width: 100%;padding-bottom: 10px;">Email: @Html.TextBoxFor(x => x.Email, new { type = "email", id = "email", @class = "form-control", placeholder = "Email Adress", @readonly = "readonly", style = "background-color: #525c74; color: white; border: none;" })</label>
 
-									<a href="/Account/ChangePassword" id="changePasswordBtn" class="btn btn-danger" style="width: 100%;text-decoration:solid; margin-top: -1vh;">Change Password  <span class="glyphicon glyphicon-lock"></span></a>
-									<div style="height: 60px;"></div>
-									<input type="submit" id="update" class="btn btn-danger pull-right" style="width: 100%; margin-bottom: -75px;" value="Save Changes">
-								</div>
-							}
+                                    <a href="/Account/ChangePassword" id="changePasswordBtn" class="btn btn-danger" style="width: 100%;text-decoration:solid; margin-top: -1vh;">Change Password  <span class="glyphicon glyphicon-lock"></span></a>
+                                    <div style="height: 60px;"></div>
+                                    <input type="submit" id="update" class="btn btn-danger pull-right" style="width: 100%; margin-bottom: -75px;" value="Save Changes">
+                                </div>
+                            }
 
-							<div style="clear:both; width: 100%; margin: 10% auto;" id="errors">
+                            <div style="clear:both; width: 100%; margin: 10% auto;" id="errors">
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</center>
+    </center>
 </body>

@@ -1,5 +1,4 @@
-﻿using LOS.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -7,16 +6,17 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
-using LOS.Bussiness.Services.CommentServices;
-using LOS.Bussiness.Services.CategoryServices;
 using System;
-using LOS.Bussiness.Services.ProductServices;
-using LOS.Domain.Models.Entities.IdentityModels;
-using LOS.Domain.Models.Entities;
 using LOS.Common;
-using LOS.Bussiness.Services.CartServices;
 using LOS.WebApplication;
 using LOS.EmailClient;
+using LOS.ProducModel.Domain;
+using LOS.CommentService.Domain;
+using LOS.CategoryService.Domain;
+using LOS.ProductService.Domain;
+using LOS.CartService.Domain;
+using LOS.CategoryModel.Domain;
+using LOS.WebApplication.Models;
 
 namespace LOS.Controllers
 {

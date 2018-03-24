@@ -1,12 +1,9 @@
-﻿using LOS.Bussiness;
-using LOS.Bussiness.Services.CartServices;
-using LOS.Bussiness.Services.ProductServices;
-using LOS.Bussiness.Services.UserServices;
-using LOS.Domain.Models.Entities;
-using LOS.Domain.Models.Entities.IdentityModels;
-using LOS.Models;
+﻿using LOS.CartService.Domain;
+using LOS.DatabaseContext;
+using LOS.WebApplication.Models;
+using LOS.ProducModel.Domain;
+using LOS.ProductService.Domain;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +15,6 @@ namespace LOS.WebApplication.Controllers
     {
 
         private readonly ApplicationContext context;
-        private UserService userService;
         private readonly ICartService cartService;
         private readonly IProductService productService;
 
@@ -27,14 +23,13 @@ namespace LOS.WebApplication.Controllers
             this.context = context;
             this.productService = productService;
             this.cartService = cartService;
-            this.userService = new UserService(new UserStore<ApplicationUser>(context));
         }
 
         [HttpGet, AllowAnonymous]
         public async Task<ActionResult> Index()
         {
             List<Product> products = await productService.GetLatestAsync(4);
-            List<Image> images = new List<Image>();
+            List<LOS.ImageModel.Domain.Image> images = new List<LOS.ImageModel.Domain.Image>();
 
             foreach (var product in products)
             {

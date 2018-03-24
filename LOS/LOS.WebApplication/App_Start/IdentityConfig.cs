@@ -1,4 +1,5 @@
-﻿using LOS.Domain.Models.Entities.IdentityModels;
+﻿using LOS.IdentityModels.Domain;
+using LOS.ProducModel.Domain;
 using Microsoft.AspNet.Identity;
 
 namespace LOS.WebApplication.App_Start

@@ -1,4 +1,4 @@
-﻿using LOS.Domain.Models.Entities.IdentityModels;
+﻿using LOS.ProducModel.Domain;
 using Microsoft.AspNet.Identity;
 
 namespace LOS.UserService.Domain

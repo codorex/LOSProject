@@ -1,15 +1,15 @@
 ﻿@model LOS.WebApplication.Models.CartViewModel
-@using LOS.Domain.Models.Entities.IdentityModels;
+@using LOS.IdentityModels.Domain;
 @{
-	ViewBag.Title = "Cart";
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	decimal totalCost = 0;
-	int itemCount = 0;
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal totalCost = 0;
+    int itemCount = 0;
 
-	foreach (var item in Model.CartItems)
-	{
-		itemCount += item.Value.Count;
-	}
+    foreach (var item in Model.CartItems)
+    {
+        itemCount += item.Value.Count;
+    }
 }
 <link href="~/Stylesheet/accountServicesStyle.css" rel="stylesheet" />
 <link href="~/Stylesheet/style.css" rel="stylesheet" />
@@ -32,7 +32,7 @@
                     totalCost += productMapping.Value[0].Price * productMapping.Value.Count;
                     <li class="list-group-item">
                         <div class="checkbox">
-							<img id="images-preview" src="~/ImageHandler.ashx?id=@productMapping.Value[0].Images[0].FileID.Value" width="60"/>
+                            <img id="images-preview" src="~/ImageHandler.ashx?id=@productMapping.Value[0].Images[0].FileID.Value" width="60" />
                             <label for="checkbox">
                                 @Html.ActionLink(productMapping.Value[0].Name + $" ({productMapping.Value.Count})", "Details", "Product", new { id = productMapping.Key }, null)
                             </label>

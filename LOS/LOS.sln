@@ -5,9 +5,7 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.WebApplication", "LOS.WebApplication\LOS.WebApplication.csproj", "{6948AE67-1AC7-45DF-A720-3B0E545808A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Bussiness", "LOS.Bussiness\LOS.Bussiness.csproj", "{3B34909E-DA89-4470-9758-FB231028CE90}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Domain.Models", "LOS.Domain.Models\LOS.Domain.Models.csproj", "{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.DatabaseContext", "LOS.Database.Context\LOS.DatabaseContext.csproj", "{3B34909E-DA89-4470-9758-FB231028CE90}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Common", "LOS.Common\LOS.Common.csproj", "{0E65EF35-95A3-45FC-9940-D567165C443A}"
 EndProject
@@ -17,19 +15,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModels", "DomainModels", "{DFB3FB6E-9147-4677-AE72-C4F47AD78027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Product.Domain", "LOS.Product.Domain\LOS.Product.Domain.csproj", "{C6A84B17-B437-4ACE-B174-A74C55FECBA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.ProducModel.Domain", "LOS.Product.Domain\LOS.ProducModel.Domain.csproj", "{C6A84B17-B437-4ACE-B174-A74C55FECBA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Category.Domain", "LOS.Category.Domain\LOS.Category.Domain.csproj", "{EA182E62-928B-46B3-B9E6-CEBC0134F655}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.CategoryModel.Domain", "LOS.Category.Domain\LOS.CategoryModel.Domain.csproj", "{EA182E62-928B-46B3-B9E6-CEBC0134F655}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.CartItem.Domain", "LOS.CartItem.Domain\LOS.CartItem.Domain.csproj", "{71798DD9-B47C-4C7B-A8E6-E5C2276AE9AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.CartItemModel.Domain", "LOS.CartItem.Domain\LOS.CartItemModel.Domain.csproj", "{71798DD9-B47C-4C7B-A8E6-E5C2276AE9AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Comment.Domain", "LOS.Comment.Domain\LOS.Comment.Domain.csproj", "{6065FF99-7879-4954-A1C8-2C880D917DF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.CommentModel.Domain", "LOS.Comment.Domain\LOS.CommentModel.Domain.csproj", "{6065FF99-7879-4954-A1C8-2C880D917DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.File.Domain", "LOS.File.Domain\LOS.File.Domain.csproj", "{D5BAF0F5-1C6B-468B-879C-5C4FE38D469C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.FileModel.Domain", "LOS.File.Domain\LOS.FileModel.Domain.csproj", "{D5BAF0F5-1C6B-468B-879C-5C4FE38D469C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.Image.Domain", "LOS.Image.Domain\LOS.Image.Domain.csproj", "{3D8540B7-063A-448A-B3C7-061CDF64F70A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.ImageModel.Domain", "LOS.Image.Domain\LOS.ImageModel.Domain.csproj", "{3D8540B7-063A-448A-B3C7-061CDF64F70A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.RatingLog.Domain", "LOS.RatingLog.Domain\LOS.RatingLog.Domain.csproj", "{4C82BF42-5F4F-4799-8B1E-12FC032500ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.RatingLogModel.Domain", "LOS.RatingLog.Domain\LOS.RatingLogModel.Domain.csproj", "{4C82BF42-5F4F-4799-8B1E-12FC032500ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOS.IdentityModels.Domain", "LOS.IdentityModels.Domain\LOS.IdentityModels.Domain.csproj", "{77C8AD15-D38F-4DE7-B45E-7BE6CF85B3C7}"
 EndProject
@@ -57,10 +55,6 @@ Global
 		{3B34909E-DA89-4470-9758-FB231028CE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B34909E-DA89-4470-9758-FB231028CE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B34909E-DA89-4470-9758-FB231028CE90}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E65EF35-95A3-45FC-9940-D567165C443A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E65EF35-95A3-45FC-9940-D567165C443A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E65EF35-95A3-45FC-9940-D567165C443A}.Release|Any CPU.ActiveCfg = Release|Any CPU

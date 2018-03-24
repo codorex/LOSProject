@@ -1,4 +1,5 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.CommentModel.Domain;
+using LOS.ProducModel.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

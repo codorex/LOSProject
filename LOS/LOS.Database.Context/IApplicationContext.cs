@@ -4,6 +4,7 @@ using LOS.CommentModel.Domain;
 using LOS.FileModel.Domain;
 using LOS.ImageModel.Domain;
 using LOS.ProducModel.Domain;
+using LOS.RatingLogModel.Domain;
 using System.Data.Entity;
 using System.Threading.Tasks;
 

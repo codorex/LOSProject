@@ -1,8 +1,9 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.CategoryModel.Domain;
+using LOS.ProducModel.Domain;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LOS.Models
+namespace LOS.WebApplication.Models
 {
     public class NavbarModel
     {

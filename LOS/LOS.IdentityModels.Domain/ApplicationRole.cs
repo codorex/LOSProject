@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LOS.Domain.Models.Entities.IdentityModels
+namespace LOS.IdentityModels.Domain
 {
     [NotMapped]
     public class ApplicationRole : IdentityRole { }

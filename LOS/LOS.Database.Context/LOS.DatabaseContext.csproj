@@ -106,7 +106,6 @@
     <Compile Include="IApplicationContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProductPagedListExtensions.cs" />
-    <Compile Include="PagedList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -115,37 +114,37 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LOS.CartItem.Domain\LOS.CartItem.Domain.csproj">
+    <ProjectReference Include="..\LOS.CartItem.Domain\LOS.CartItemModel.Domain.csproj">
       <Project>{71798dd9-b47c-4c7b-a8e6-e5c2276ae9ad}</Project>
-      <Name>LOS.CartItem.Domain</Name>
+      <Name>LOS.CartItemModel.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LOS.Category.Domain\LOS.Category.Domain.csproj">
+    <ProjectReference Include="..\LOS.Category.Domain\LOS.CategoryModel.Domain.csproj">
       <Project>{ea182e62-928b-46b3-b9e6-cebc0134f655}</Project>
-      <Name>LOS.Category.Domain</Name>
+      <Name>LOS.CategoryModel.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LOS.Comment.Domain\LOS.Comment.Domain.csproj">
+    <ProjectReference Include="..\LOS.Comment.Domain\LOS.CommentModel.Domain.csproj">
       <Project>{6065ff99-7879-4954-a1c8-2c880d917df0}</Project>
-      <Name>LOS.Comment.Domain</Name>
+      <Name>LOS.CommentModel.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LOS.Domain.Models\LOS.Domain.Models.csproj">
-      <Project>{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}</Project>
-      <Name>LOS.Domain.Models</Name>
+    <ProjectReference Include="..\LOS.Common\LOS.Common.csproj">
+      <Project>{0E65EF35-95A3-45FC-9940-D567165C443A}</Project>
+      <Name>LOS.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LOS.File.Domain\LOS.File.Domain.csproj">
+    <ProjectReference Include="..\LOS.File.Domain\LOS.FileModel.Domain.csproj">
       <Project>{d5baf0f5-1c6b-468b-879c-5c4fe38d469c}</Project>
-      <Name>LOS.File.Domain</Name>
+      <Name>LOS.FileModel.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LOS.Image.Domain\LOS.Image.Domain.csproj">
+    <ProjectReference Include="..\LOS.Image.Domain\LOS.ImageModel.Domain.csproj">
       <Project>{3d8540b7-063a-448a-b3c7-061cdf64f70a}</Project>
-      <Name>LOS.Image.Domain</Name>
+      <Name>LOS.ImageModel.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LOS.Product.Domain\LOS.Product.Domain.csproj">
+    <ProjectReference Include="..\LOS.Product.Domain\LOS.ProducModel.Domain.csproj">
       <Project>{c6a84b17-b437-4ace-b174-a74c55fecba6}</Project>
-      <Name>LOS.Product.Domain</Name>
+      <Name>LOS.ProducModel.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LOS.RatingLog.Domain\LOS.RatingLog.Domain.csproj">
+    <ProjectReference Include="..\LOS.RatingLog.Domain\LOS.RatingLogModel.Domain.csproj">
       <Project>{4c82bf42-5f4f-4799-8b1e-12fc032500ed}</Project>
-      <Name>LOS.RatingLog.Domain</Name>
+      <Name>LOS.RatingLogModel.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

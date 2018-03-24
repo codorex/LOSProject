@@ -1,9 +1,10 @@
-﻿using LOS.Bussiness.Services;
-using LOS.Domain.Models.Entities;
+﻿using LOS.CategoryModel.Domain;
+using LOS.DatabaseContext;
+using LOS.ProducModel.Domain;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace LOS.Models
+namespace LOS.WebApplication.Models
 {
     public class DisplayModel
     {
@@ -17,7 +18,7 @@ namespace LOS.Models
         public string sortMethod { get; set; }
         public string sort { get; set; }
         public int CartItemCount { get; set; }
-        public List<Image> ProductsImages { get; set; }
+        public List<LOS.ImageModel.Domain.Image> ProductsImages { get; set; }
 
         public DisplayModel()
         {

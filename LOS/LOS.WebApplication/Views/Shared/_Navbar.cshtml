@@ -1,4 +1,4 @@
-﻿@model LOS.Models.NavbarModel
+﻿@model LOS.WebApplication.Models.NavbarModel
 @{
     int cartItems = Model.CartItemCount;
     if (ViewBag.CartItemCount != null)
@@ -6,7 +6,7 @@
         cartItems = ViewBag.CartItemCount;
     }
 }
-@using LOS.Domain.Models.Entities.IdentityModels;
+@using LOS.IdentityModels.Domain;
 
 <link href="~/Stylesheet/navbar.css" rel="stylesheet" />
 

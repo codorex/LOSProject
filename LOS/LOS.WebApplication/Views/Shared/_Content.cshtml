@@ -1,62 +1,62 @@
-﻿@model LOS.Models.DisplayModel
+﻿@model LOS.WebApplication.Models.DisplayModel
 @{
-	string keyword = Model.keyword;
-	string sort = Model.sort;
+    string keyword = Model.keyword;
+    string sort = Model.sort;
 }
 
 <link href="~/Stylesheet/products-display.css" rel="stylesheet" />
 
 <div class="well well-sm" id="filterControl" style="border-radius: 15px;box-shadow: black 0px 0px 50px 1px;">
-	@{
-		if (Model.Category != null)
-		{
-			<div align="center" style="margin-top: 30px;">
-				<h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><strong>@Model.Category.Name</strong></h1>
-			</div>
-		}
-	}
-	<div class="btn-group" align="center">
-		<ul>
-			<li>
-				<a href="#" id="list" class="btn btn-danger">
-					<span class="glyphicon glyphicon-th-list">
-					</span>List
-				</a>
-			</li>
-			<li>
-				<a href="#" id="grid" class="btn btn-danger" style="margin-right: 5vw;">
-					<span class="glyphicon glyphicon-th"></span>Grid
-				</a>
-			</li>
-					<li>
-						<center>
-							<input type="text" id="sort" style="visibility: hidden;" value="@sort" />
-							<div id="result">
+    @{
+        if (Model.Category != null)
+        {
+            <div align="center" style="margin-top: 30px;">
+                <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><strong>@Model.Category.Name</strong></h1>
+            </div>
+        }
+    }
+    <div class="btn-group" align="center">
+        <ul>
+            <li>
+                <a href="#" id="list" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-th-list">
+                    </span>List
+                </a>
+            </li>
+            <li>
+                <a href="#" id="grid" class="btn btn-danger" style="margin-right: 5vw;">
+                    <span class="glyphicon glyphicon-th"></span>Grid
+                </a>
+            </li>
+            <li>
+                <center>
+                    <input type="text" id="sort" style="visibility: hidden;" value="@sort" />
+                    <div id="result">
 
-							</div>
-							@{Html.RenderPartial("_FilterControls", Model);}
-						</center>
-					</li>
-					<li>
-						<ul>
-							@using (Html.BeginForm("Index", "Product", new { id = Model.Category.CategoryID, page = 1, keyword = "", sort=sort }, FormMethod.Post, null))
-							{
-								<li><input name="keyword" class="form-control" value="@keyword" /></li>
-								<li><button type="submit" id="search" class="btn btn-danger" style="margin-top:-4px;" onclick="location.href='@Url.Action("Index", "Product", new { id=Model.Category.CategoryID, page = 1 })'">Search</button></li>
-								<li>
-									<button type="button" id="desc" style="margin-bottom: 5px;" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="", keyword = ""})'">
-										Clear Filters
-										<span style="padding-left: 5px;" class="glyphicon glyphicon-remove-sign">
-										</span>
-									</button>
-								</li>
-							}
-							
-						</ul>
-					</li>
-				</ul>
-	</div>
+                    </div>
+                    @{Html.RenderPartial("_FilterControls", Model);}
+                </center>
+            </li>
+            <li>
+                <ul>
+                    @using (Html.BeginForm("Index", "Product", new { id = Model.Category.CategoryID, page = 1, keyword = "", sort = sort }, FormMethod.Post, null))
+                    {
+                        <li><input name="keyword" class="form-control" value="@keyword" /></li>
+                        <li><button type="submit" id="search" class="btn btn-danger" style="margin-top:-4px;" onclick="location.href='@Url.Action("Index", "Product", new { id=Model.Category.CategoryID, page = 1 })'">Search</button></li>
+                        <li>
+                            <button type="button" id="desc" style="margin-bottom: 5px;" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="", keyword = ""})'">
+                                Clear Filters
+                                <span style="padding-left: 5px;" class="glyphicon glyphicon-remove-sign">
+                                </span>
+                            </button>
+                        </li>
+                    }
+
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>
 <div id="searchResult">
-	@{Html.RenderPartial("_DisplayProducts", Model);}
+    @{Html.RenderPartial("_DisplayProducts", Model);}
 </div>

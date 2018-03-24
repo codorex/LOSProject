@@ -3,36 +3,36 @@
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width" />
-	<link rel="stylesheet" href="~/Stylesheet/bootstrap.min.css" />
-	<link rel="stylesheet" href="~/Stylesheet/bootstrap.css" />
-	<link rel="stylesheet" href="~/Stylesheet/style.css" />
-	<link rel="shortcut icon" href="~/Resources/Images/logo.png" />
-	<script src="~/Scripts/jquery-1.9.1.min.js"></script>
-	<script src="~/Scripts/jquery.fancybox.js"></script>
-	<script src="~/Scripts/jquery.fancybox.pack.js"></script>
-	<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-	<title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Stylesheet/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Stylesheet/bootstrap.css" />
+    <link rel="stylesheet" href="~/Stylesheet/style.css" />
+    <link rel="shortcut icon" href="~/Resources/Images/logo.png" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.fancybox.js"></script>
+    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <title>@ViewBag.Title</title>
 </head>
 <body>
-	<div style="height: 79%;">
-		<header>
-			@Html.Action("_Navbar", new LOS.Models.NavbarModel())
-		</header>
-		<div id="notification" class="alert-info">
-			<center><h5><span class="glyphicon glyphicon-info-sign"></span> Successfully added to Cart</h5></center>
-		</div>
-		<div id="notification-error" class="btn btn-danger">
-			<h5>Product out of stock.</h5>
-		</div>
-		<div class="container" style="min-height: 510px;">
-			@RenderBody()
-		</div>
+    <div style="height: 79%;">
+        <header>
+            @Html.Action("_Navbar", new LOS.WebApplication.Models.NavbarModel())
+        </header>
+        <div id="notification" class="alert-info">
+            <center><h5><span class="glyphicon glyphicon-info-sign"></span> Successfully added to Cart</h5></center>
+        </div>
+        <div id="notification-error" class="btn btn-danger">
+            <h5>Product out of stock.</h5>
+        </div>
+        <div class="container" style="min-height: 510px;">
+            @RenderBody()
+        </div>
 
-		<script src="~/Scripts/dropdown.js"></script>
-		<script src="~/Scripts/bootstrap.min.js"></script>
-		<script src="~/Scripts/Validation.js"></script>
-		<script src="~/Scripts/script.js"></script>
-	</div>
+        <script src="~/Scripts/dropdown.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/Validation.js"></script>
+        <script src="~/Scripts/script.js"></script>
+    </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LOS.CartItem.Domain
+namespace LOS.CartItemModel.Domain
 {
     public class CartItem
     {

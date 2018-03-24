@@ -1,14 +1,14 @@
-﻿@model LOS.Models.DetailsModel
+﻿@model LOS.WebApplication.Models.DetailsModel
 <div>
-	<ul class="ratingSection">
-		<li>
-			<h4>Rate now:</h4>
-		</li>
-		<li></li>
-		@for (int i = 1; i <= 5; i++)
-		{
-			<button class="glyphicon glyphicon-star star1" data-voteCount="@Model.RatingVoteCount" data-productId="@Model.ProductID" data-rating="@i" id="rateProduct" onclick="rate(this);"></button>
-		}
-	</ul>
+    <ul class="ratingSection">
+        <li>
+            <h4>Rate now:</h4>
+        </li>
+        <li></li>
+        @for (int i = 1; i <= 5; i++)
+        {
+            <button class="glyphicon glyphicon-star star1" data-voteCount="@Model.RatingVoteCount" data-productId="@Model.ProductID" data-rating="@i" id="rateProduct" onclick="rate(this);"></button>
+        }
+    </ul>
 </div>
 
