@@ -1,8 +1,7 @@
-﻿using LOS.Domain.Models.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LOS.Bussiness.Services.ProductServices
+namespace LOS.ProductService.Domain
 {
     public interface IProductService
     {

@@ -1,8 +1,8 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.ProducModel.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LOS.Bussiness.Services.CartServices
+namespace LOS.CartService.Domain
 {
     public interface ICartService
     {

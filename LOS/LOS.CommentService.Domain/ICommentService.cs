@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LOS.Bussiness.Services.CommentServices
+namespace LOS.CommentService.Domain
 {
     public interface ICommentService
     {

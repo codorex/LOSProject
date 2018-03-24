@@ -1,4 +1,4 @@
-﻿namespace LOS.Bussiness.Services.UserServices
+﻿namespace LOS.UserService.Domain
 {
     public interface IUserService
     {

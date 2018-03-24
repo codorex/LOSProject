@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LOS.Comment.Domain
+namespace LOS.CommentModel.Domain
 {
     public class Comment
     {

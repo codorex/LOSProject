@@ -1,7 +1,7 @@
 ﻿using LOS.Domain.Models.Entities.IdentityModels;
 using Microsoft.AspNet.Identity;
 
-namespace LOS.Bussiness.Services.UserServices
+namespace LOS.UserService.Domain
 {
     public class UserService : UserManager<ApplicationUser>, IUserService
     {

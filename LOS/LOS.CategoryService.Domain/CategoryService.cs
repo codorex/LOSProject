@@ -1,10 +1,11 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.Bussiness;
+using LOS.Domain.Models.Entities;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LOS.Bussiness.Services.CategoryServices
+namespace LOS.CategoryService.Domain
 {
     public class CategoryService : ICategoryService
     {

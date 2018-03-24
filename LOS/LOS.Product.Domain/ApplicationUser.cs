@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 
-namespace LOS.Product.Domain
+namespace LOS.ProducModel.Domain
 {
     public class ApplicationUser : IdentityUser
     {

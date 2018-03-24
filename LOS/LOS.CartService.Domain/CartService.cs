@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using LOS.CartItemModel.Domain;
+using LOS.DatabaseContext;
+using LOS.ProducModel.Domain;
+using LOS.ProductService.Domain;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.Entity;
-using LOS.Bussiness.Services.ProductServices;
-using LOS.Domain.Models.Entities;
 
-namespace LOS.Bussiness.Services.CartServices
+namespace LOS.CartService.Domain
 {
     public class CartService : ICartService
     {

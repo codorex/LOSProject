@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LOS.RatingLog.Domain
+namespace LOS.RatingLogModel.Domain
 {
     public class RatingLog
     {

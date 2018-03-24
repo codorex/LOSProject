@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LOS.Bussiness.Services
+namespace LOS.DatabaseContext
 {
     /// <summary>
     /// Paged collection of items of type T with specified page size.

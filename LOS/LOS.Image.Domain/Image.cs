@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LOS.Image.Domain
+namespace LOS.ImageModel.Domain
 {
     public class Image
     {

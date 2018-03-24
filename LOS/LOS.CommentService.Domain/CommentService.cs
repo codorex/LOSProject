@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LOS.Bussiness.Services.CommentServices
+namespace LLOS.CommentService.Domain
 {
     public class CommentService : ICommentService
     {

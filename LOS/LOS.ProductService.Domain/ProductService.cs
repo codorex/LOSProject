@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using LOS.DatabaseContext;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LOS.Domain.Models.Entities;
+using LOS.Product.Domain;
+using LOS.Category.Domain;
 
-namespace LOS.Bussiness.Services.ProductServices
+namespace LOS.ProductService.Domain
 {
     public class ProductService : IProductService
     {
@@ -15,7 +16,7 @@ namespace LOS.Bussiness.Services.ProductServices
             this.context = context;
         }
 
-        public async Task CreateAsync(Product product)
+        public async Task CreateAsync(Product.Domain.Product product)
         {
             context.Products.Add(product);
 
@@ -24,43 +25,43 @@ namespace LOS.Bussiness.Services.ProductServices
 
         public async Task DeleteAsync(int productID)
         {
-            Product product = await context.Products.SingleOrDefaultAsync(p => p.ProductID == productID);
+            Product.Domain.Product product = await context.Products.SingleOrDefaultAsync(p => p.ProductID == productID);
             context.Products.Remove(product);
 
             await context.SaveChangesAsync();
         }
 
-        public async Task<List<Product>> GetAllAsync()
+        public async Task<List<Product.Domain.Product>> GetAllAsync()
         {
             return await context.Products.ToListAsync();
         }
 
-        public async Task<Product> GetAsync(int productID)
+        public async Task<Product.Domain.Product> GetAsync(int productID)
         {
             Product product = await context.Products.SingleOrDefaultAsync(p => p.ProductID == productID);
 
             return product;
         }
 
-        public async Task<PagedList<Product>> GetListAsync(int pageNumber, int pageSize, string search, string sort = "")
+        public async Task<PagedList<Product.Domain.Product>> GetListAsync(int pageNumber, int pageSize, string search, string sort = "")
         {
             if (string.IsNullOrEmpty(search))
             {
                 search = "";
             }
 
-            IQueryable<Product> products = context.Products.Where(p => p.Name.Contains(search));
-            PagedList<Product> productsPaged = null;
+            IQueryable<Product.Domain.Product> products = context.Products.Where(p => p.Name.Contains(search));
+            PagedList<Product.Domain.Product> productsPaged = null;
 
             return await productsPaged.SortAsync(products, sort, pageNumber, pageSize);
         }
 
         //Get Paged Products (sorted and filtered) for specific children category 
-        public async Task<PagedList<Product>> GetListByCategoryIdAsync(int pageNumber, int pageSize, int categoryID, string keyword = "", string sort = "")
+        public async Task<PagedList<Product.Domain.Product>> GetListByCategoryIdAsync(int pageNumber, int pageSize, int categoryID, string keyword = "", string sort = "")
         {
             keyword = string.IsNullOrEmpty(keyword) ? "" : keyword.ToLower();
-            IQueryable<Product> products = context.Products.Where(p => p.CategoryID == categoryID && p.Name.Contains(keyword));
-            PagedList<Product> productsPaged = null;
+            IQueryable<Product.Domain.Product> products = context.Products.Where(p => p.CategoryID == categoryID && p.Name.Contains(keyword));
+            PagedList<Product.Domain.Product> productsPaged = null;
 
             return await productsPaged.SortAsync(products, sort, pageNumber, pageSize);
         }
@@ -75,7 +76,7 @@ namespace LOS.Bussiness.Services.ProductServices
         /// <param name="keyword">Product name filter.</param>
         /// <param name = "sort" > Determines the order in which the collection will be sorted.</param>
         /// <returns></returns>
-        public async Task<PagedList<Product>> GetListByParentCategoryIdAsync(int pageNumber, int pageSize, int categoryID, string keyword = "", string sort = "")
+        public async Task<PagedList<Product.Domain.Product>> GetListByParentCategoryIdAsync(int pageNumber, int pageSize, int categoryID, string keyword = "", string sort = "")
         {
             // get a collection of all child categories of the current parent category
             List<Category> children = await context.Categories.Where(x => x.ParentCategoryID != null && x.ParentCategoryID.Value == categoryID).ToListAsync();

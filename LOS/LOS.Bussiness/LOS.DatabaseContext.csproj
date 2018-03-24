@@ -7,8 +7,8 @@
     <ProjectGuid>{3B34909E-DA89-4470-9758-FB231028CE90}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LOS.Bussiness</RootNamespace>
-    <AssemblyName>LOS.Bussiness</AssemblyName>
+    <RootNamespace>LOS.DatabaseContext</RootNamespace>
+    <AssemblyName>LOS.DatabaseContext</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -105,18 +105,8 @@
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="IApplicationContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CartServices\CartService.cs" />
-    <Compile Include="Services\CartServices\ICartService.cs" />
-    <Compile Include="Services\CategoryServices\CategoryService.cs" />
-    <Compile Include="Services\CategoryServices\ICategoryService.cs" />
-    <Compile Include="Services\CommentServices\CommentService.cs" />
-    <Compile Include="Services\CommentServices\ICommentService.cs" />
-    <Compile Include="Services\ProductPagedListExtensions.cs" />
-    <Compile Include="Services\PagedList.cs" />
-    <Compile Include="Services\ProductServices\IProductService.cs" />
-    <Compile Include="Services\ProductServices\ProductService.cs" />
-    <Compile Include="Services\UserServices\IUserService.cs" />
-    <Compile Include="Services\UserServices\UserService.cs" />
+    <Compile Include="ProductPagedListExtensions.cs" />
+    <Compile Include="PagedList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -125,9 +115,37 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LOS.CartItem.Domain\LOS.CartItem.Domain.csproj">
+      <Project>{71798dd9-b47c-4c7b-a8e6-e5c2276ae9ad}</Project>
+      <Name>LOS.CartItem.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.Category.Domain\LOS.Category.Domain.csproj">
+      <Project>{ea182e62-928b-46b3-b9e6-cebc0134f655}</Project>
+      <Name>LOS.Category.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.Comment.Domain\LOS.Comment.Domain.csproj">
+      <Project>{6065ff99-7879-4954-a1c8-2c880d917df0}</Project>
+      <Name>LOS.Comment.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LOS.Domain.Models\LOS.Domain.Models.csproj">
       <Project>{1545B92C-6AC4-47C0-BF03-A99E1EA9C61F}</Project>
       <Name>LOS.Domain.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.File.Domain\LOS.File.Domain.csproj">
+      <Project>{d5baf0f5-1c6b-468b-879c-5c4fe38d469c}</Project>
+      <Name>LOS.File.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.Image.Domain\LOS.Image.Domain.csproj">
+      <Project>{3d8540b7-063a-448a-b3c7-061cdf64f70a}</Project>
+      <Name>LOS.Image.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.Product.Domain\LOS.Product.Domain.csproj">
+      <Project>{c6a84b17-b437-4ace-b174-a74c55fecba6}</Project>
+      <Name>LOS.Product.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LOS.RatingLog.Domain\LOS.RatingLog.Domain.csproj">
+      <Project>{4c82bf42-5f4f-4799-8b1e-12fc032500ed}</Project>
+      <Name>LOS.RatingLog.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

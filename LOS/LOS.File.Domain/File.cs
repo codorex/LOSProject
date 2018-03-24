@@ -1,4 +1,4 @@
-﻿namespace LOS.File.Domain
+﻿namespace LOS.FileModel.Domain
 {
     public class File
     {

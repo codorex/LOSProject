@@ -1,8 +1,9 @@
-﻿using System;
+﻿using LOS.ImageModel.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LOS.Product.Domain
+namespace LOS.ProducModel.Domain
 {
     public class Product
     {
@@ -15,7 +16,7 @@ namespace LOS.Product.Domain
         public string Description { get; set; }
         public decimal Rating { get; set; }
         public int Quantity { get; set; }
-        public List<LOS.Image.Domain.Image> Images { get; set; }
+        public List<Image> Images { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
 
         public Product()

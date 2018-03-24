@@ -1,4 +1,5 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.DatabaseContext;
+using LOS.ProducModel.Domain;
 using System.Linq;
 using System.Threading.Tasks;
 

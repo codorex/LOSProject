@@ -1,9 +1,14 @@
-﻿using LOS.Domain.Models.Entities;
-using LOS.Domain.Models.Entities.IdentityModels;
+﻿using LOS.CartItemModel.Domain;
+using LOS.CategoryModel.Domain;
+using LOS.CommentModel.Domain;
+using LOS.FileModel.Domain;
+using LOS.ImageModel.Domain;
+using LOS.ProducModel.Domain;
+using LOS.RatingLogModel.Domain;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
-namespace LOS.Bussiness
+namespace LOS.DatabaseContext
 {
     public class ApplicationContext : IdentityDbContext<ApplicationUser>, IApplicationContext
     {

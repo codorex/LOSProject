@@ -1,4 +1,4 @@
-﻿namespace LOS.Category.Domain
+﻿namespace LOS.CategoryModel.Domain
 {
     public class Category
     {

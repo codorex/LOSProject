@@ -1,8 +1,13 @@
-﻿using LOS.Domain.Models.Entities;
+﻿using LOS.CartItemModel.Domain;
+using LOS.CategoryModel.Domain;
+using LOS.CommentModel.Domain;
+using LOS.FileModel.Domain;
+using LOS.ImageModel.Domain;
+using LOS.ProducModel.Domain;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
-namespace LOS.Bussiness
+namespace LOS.DatabaseContext
 {
     public interface IApplicationContext
     {

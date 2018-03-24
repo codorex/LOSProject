@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Security.Principal;
 
-namespace LOS.Domain.Models.Entities.IdentityModels
+namespace LOS.IdentityModels.Domain
 {
     public static class GenericIdentityExtensions
     {
