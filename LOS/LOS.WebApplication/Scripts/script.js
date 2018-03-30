@@ -1,5 +1,6 @@
 ﻿var statsExpanded = false;
 var ratedProductsExpanded = false;
+var menuIsExpanded = false;
 var reviewedProductsExpanded = false;
 
 $(function () {
@@ -128,4 +129,15 @@ function expandReviewedProducts() {
 
 function openProduct(id) {
 	location.href = '/product/details/' + id;
+}
+
+function expandMenu() {
+	if (menuIsExpanded) {
+		$('#navbar-wrap').fadeOut(200);
+	}
+	else {
+		$('#navbar-wrap').fadeIn(200);
+	}
+
+	menuIsExpanded = !menuIsExpanded;
 }

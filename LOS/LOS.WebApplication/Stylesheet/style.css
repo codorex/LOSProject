@@ -8,7 +8,7 @@ body {
 	background-color: #303a52;
 }
 
-.dropdown-header a{
+.dropdown-header a {
 	font-size: 1.3vw;
 }
 
@@ -16,7 +16,7 @@ body {
 	font-size: 1.1vw;
 }
 
-.thumbnail{
+.thumbnail {
 	background: none;
 }
 
@@ -33,15 +33,15 @@ body {
 	pointer-events: none;
 }
 
-	#featured_label h3{
+	#featured_label h3 {
 		font-size: 2.9vh;
 	}
-	
-	.card {
-		background-color: #574b90;
-	}
 
-.form-control{
+.card {
+	background-color: #574b90;
+}
+
+.form-control {
 	height: 31px;
 }
 
@@ -80,21 +80,24 @@ button {
 	#prodDetail a {
 		color: #5cf6aa;
 	}
+
 .caption {
 	background-color: #303a52;
 }
+
 .thumbnail {
 	border: 1px solid #303a52;
 }
 
-#products{
+#products {
 	padding: 10px;
 }
 
-.user-stats-button{
+.user-stats-button {
 	position: fixed;
 	right: 30px;
 	top: 80px;
+	z-index: 500;
 }
 
 .btn.stats-btn {
@@ -120,20 +123,22 @@ button {
 	cursor: default;
 }
 
-.user-stats-wrapper h3{
-	color: white;
-}
+	.user-stats-wrapper h3 {
+		color: white;
+	}
 
 	.user-stats-wrapper li {
 		background-color: #687187;
 		color: white;
 		border: none;
 	}
+
 		.user-stats-wrapper li:hover {
 			background-color: #8c95ac;
 			border: none;
 		}
-.user-stats-ratedProducts-container, .user-stats-reviewedProducts-container{
+
+.user-stats-ratedProducts-container, .user-stats-reviewedProducts-container {
 	display: none;
 	max-height: 300px;
 	overflow-y: scroll;
@@ -143,13 +148,12 @@ button {
 	cursor: default;
 }
 
-.ratedProducts-button, .reviewedProducts-button{
+.ratedProducts-button, .reviewedProducts-button {
 	cursor: pointer !important;
 }
 
 .ratedProduct {
 	text-align: left !important;
-	
 	cursor: pointer;
 }
 
@@ -179,15 +183,15 @@ button {
 		border: none;
 	}
 
-	#account-dropdown{
-		width: 200px;
-		text-align: center;
-		cursor: pointer;
-	}
+#account-dropdown {
+	width: 200px;
+	text-align: center;
+	cursor: pointer;
+}
 
-	.dropdown-menu{
-		cursor: default;
-	}
+.dropdown-menu {
+	cursor: default;
+}
 
 #account-dropdown {
 	right: 10px;
@@ -263,18 +267,18 @@ button {
 	transition: linear 0.2s;
 }
 
-.active{
+.active {
 	border: 4px solid #6892D5;
 	border-radius: 10px;
 }
 
-#text-danger-email h5{
+#text-danger-email h5 {
 	padding: 10px;
 	text-align: center;
 	background-color: white;
 }
 
-.tab-pane.active{
+.tab-pane.active {
 	border: none;
 }
 
@@ -282,12 +286,12 @@ nav {
 	width: 100%;
 }
 
-.navbar.navbar-inverse{
+.navbar.navbar-inverse {
 	border-radius: 0px;
 }
+
 .mega-dropdown {
 	position: static !important;
-	
 }
 
 .mega-dropdown-menu {
@@ -335,13 +339,15 @@ nav {
 	.mega-dropdown-menu .dropdown-header {
 		font-size: 18px;
 		color: #ff3546;
-		padding: 5px  5px 5px;
+		padding: 5px 5px 5px;
 		line-height: 30px;
 		text-decoration: none;
 	}
-.dropdown-menu li a{
+
+.dropdown-menu li a {
 	font-size: 1vw;
 }
+
 .carousel-control .glyphicon-chevron-left,
 .carousel-control .glyphicon-chevron-right {
 	font-size: 12px;
@@ -351,27 +357,31 @@ nav {
 	color: #333;
 	border: 1px solid #ddd;
 }
+
 div li {
 	display: inline-block;
 }
-.input-group{
+
+.input-group {
 	width: 25vw;
 }
 
-li{
+li {
 	list-style: none;
 }
 
-#navbar-button{
+#navbar-button {
 	display: block;
 }
+
 	#navbar-button:hover {
 		background-color: #514d4d;
 	}
 
-#parentCategory{
+#parentCategory {
 	width: 10vw;
 }
+
 #categoriesDropDown {
 	margin-left: 13vw;
 }
@@ -387,7 +397,90 @@ li{
 	color: white;
 	font-size: 45px;
 }
+
 	#backToTop:hover {
 		transition: linear 0.2s;
 		color: #445372;
 	}
+
+.btn-expand-menu {
+	margin-top: 20%;
+	display: none;
+}
+
+.product-image {
+	min-height: 200px;
+}
+
+@media(max-width: 768px) {
+	.child-category-option {
+		position: relative;
+		width: 100% !important;
+	}
+
+	/*#navbar-main{
+		max-height: 100%;
+		overflow-y: auto;
+	}*/
+
+	.btn-expand-menu {
+		display: block;
+	}
+
+	.parent-category {
+		position: relative;
+		font-size: 20px !important;
+		width: 100% !important;
+		margin-bottom: 5px;
+	}
+
+	#parentCategory li a {
+		font-size: 20px;
+	}
+
+	#categoriesDropDown {
+		width: 100% !important;
+		margin-left: -35px;
+		max-height: 400px;
+		overflow: hidden;
+		overflow-y: auto;
+	}
+
+	#dropdown-manage-account {
+		width: 100%;
+	}
+	
+	.btn-manage-account, .btn-change-password, .btn-manage-account a, .btn-change-password a {
+		width: 100%;
+		font-size: 20px !important;
+	}
+
+	#logout, .btn-logout{
+		width: 90%;
+	}
+
+	#account-dropdown{
+		width: 100%;
+	}
+
+	.dropdown-signin {
+		width: 100%;
+		left: 10px;top: 0px;
+	}
+
+	.dropdown-signin .input-group{
+		width: 100%;
+	}
+	
+	#search-field {
+		width: 100%;
+	}
+
+	.product-option {
+		width: 100% !important;
+	}
+
+	.product-image {
+		min-height: 0px;
+	}
+}

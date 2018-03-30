@@ -41,7 +41,7 @@
                 <ul>
                     @using (Html.BeginForm("Index", "Product", new { id = Model.Category.CategoryID, page = 1, keyword = "", sort = sort }, FormMethod.Post, null))
                     {
-                        <li><input name="keyword" class="form-control" value="@keyword" /></li>
+                        <li><input name="keyword" class="form-control" id="search-field" value="@keyword" /></li>
                         <li><button type="submit" id="search" class="btn btn-danger" style="margin-top:-4px;" onclick="location.href='@Url.Action("Index", "Product", new { id=Model.Category.CategoryID, page = 1 })'">Search</button></li>
                         <li>
                             <button type="button" id="desc" style="margin-bottom: 5px;" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Product", new { id = Model.Category.CategoryID, page = Model.PageNumber, sort="", keyword = ""})'">
