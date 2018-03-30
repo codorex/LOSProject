@@ -412,16 +412,19 @@ li {
 	min-height: 200px;
 }
 
+.child-category-option .btn{
+	width: 7em;
+}
+
 @media(max-width: 768px) {
 	.child-category-option {
 		position: relative;
 		width: 100% !important;
 	}
 
-	/*#navbar-main{
-		max-height: 100%;
-		overflow-y: auto;
-	}*/
+	.child-category-option .btn{
+		width: 100% !important;
+	}
 
 	.btn-expand-menu {
 		display: block;

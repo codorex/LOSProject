@@ -39,7 +39,7 @@
                                         @{
                                             foreach (var childCategory in Model.Categories.Where(c => c.ParentCategoryID != null && c.ParentCategoryID.Value == category.CategoryID))
                                             {
-                                                <li class="child-category-option">@Html.ActionLink(childCategory.Name, "Index", "Product", new { id = childCategory.CategoryID }, new { data_id = childCategory.CategoryID, data_filter = childCategory.Name, @class = "btn btn-link", style = "width: 110%; margin-top: 10px;" })</li>
+                                                <li class="child-category-option">@Html.ActionLink(childCategory.Name, "Index", "Product", new { id = childCategory.CategoryID }, new { data_id = childCategory.CategoryID, data_filter = childCategory.Name, @class = "btn btn-link", style = "margin-top: 10px;" })</li>
                                             }
                                         }
                                     </ul>

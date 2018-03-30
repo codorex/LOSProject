@@ -203,6 +203,7 @@
     <Content Include="Content\jquery.fancybox-thumbs.css" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\lb_1.jpg" />
+    <Content Include="Resources\Images\logo.png" />
     <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\comments.js" />
     <Content Include="Scripts\details.js" />
